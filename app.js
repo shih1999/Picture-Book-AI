@@ -18,7 +18,7 @@ app.use('/detail', detailRouter);
 app.use('/post', postRouter);
 app.use('/postDetail', postDetailRouter);
 
-// 启动服务器
+// 啟動
 const PORT = process.env.PORT || 3000;
 
 const startServer = async () => {
