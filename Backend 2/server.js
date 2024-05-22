@@ -9,6 +9,8 @@ const postRouter = require('./routes/post');
 const postDetailRouter = require('./routes/postDetail');
 
 const app = express();
+var cors = require('cors');
+app.use(cors());
 
 app.use(bodyParser.json());
 
