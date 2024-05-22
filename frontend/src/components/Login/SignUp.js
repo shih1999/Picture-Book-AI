@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Container, Form, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import axios from 'axios';
@@ -47,59 +48,51 @@ function SignUp() {
     };
 
     return (
-        <div className="sign-container">
+        <Container className="sign-container">
             <h1>Sign Up</h1>
-            <form onSubmit={handleRegister}>
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
+            <Form onSubmit={handleRegister}>
+            <Form.Group className="form-group" controlId="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
                         type="email"
-                        id="email"
                         placeholder="WebApp@example.com"
-                        className="form-control"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="form-group" controlId="username">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
                         type="text"
-                        id="username"
                         placeholder="WebApp_GroupJ"
-                        className="form-control"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="form-group" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
                         type="password"
-                        id="password"
                         placeholder="webapp2024"
-                        className="form-control"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="form-group" controlId="confirmPassword">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control
                         type="password"
-                        id="confirmPassword"
                         placeholder="retype webapp2024"
-                        className="form-control"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                </div>
-                <button type="submit" className="btn submit-btn">Sign Up</button>
+                </Form.Group>
+                <Button type="submit" className="btn submit-btn">Sign Up</Button>
                 <p className="sign-switch">
                     Already registered? <a href="/login">login</a>
                 </p>
-            </form>
-        </div>
+            </Form>
+        </Container>
     );
 }
 
