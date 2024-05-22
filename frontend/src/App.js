@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
-// import ChooseStyle from "./components/Create/ChooseStyle";
+import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
 // import Story from "./components/Story/Story";
 // import Library from "./components/Library/Library";
@@ -45,7 +45,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/ChooseStyle" element={<ChooseStyle />} /> */}
+            <Route path="/ChooseStyle" element={<ChooseStyle />} />
             {/* <Route path="/library" element={<Library />} /> */}
             {/* <Route path="/viewstory/:bookID" element={<ViewStory />} /> */}
             {/* <Route path="/mystory" element={<MyStory />} /> */}

@@ -596,18 +596,27 @@ button:focus {
 }
 
 .project-card-view {
-  box-shadow: 0 4px 5px 3px #316639 !important;
-  color: #658754 !important;
+  box-shadow: 0 4px 5px 3px #FD5E5E !important;
+  color: #FD5E5E !important;
   background-color: transparent !important;
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
+ 
 }
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 4px 5px #316639 !important;
+  box-shadow: 0 4px 4px 5px #FD5E5E !important;
 }
+
+.project-card-title{
+  text-align: center;  
+}
+
+
+
+
 
 .book-card {
   padding-top: 50px !important;
@@ -685,10 +694,11 @@ button:focus {
   box-shadow: none !important;
 }
 .project-heading {
-  color: #658754 !important;
+  color: #FD5E5E !important;
   font-size: 2.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
+  text-align:center;
 }
 
 /* --------- */

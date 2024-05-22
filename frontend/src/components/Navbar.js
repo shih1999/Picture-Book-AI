@@ -70,7 +70,10 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link href="#pricing" onClick={() => updateExpanded(false)}>
+              <Nav.Link  
+                href="/#pricing"
+                onClick={() => updateExpanded(false)}
+              >
                 <AiFillCreditCard style={{ marginBottom: "2px" }} /> Pricing
               </Nav.Link>
             </Nav.Item>
