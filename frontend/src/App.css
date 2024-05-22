@@ -929,13 +929,6 @@ button:focus {
   margin-bottom: 15px;
 }
 
-.sign-container .form-control {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ced4da;
-}
-
 .sign-container .btn {
   width: 100%;
   padding: 10px;
@@ -943,17 +936,18 @@ button:focus {
   margin-top: 10px;
 }
 
-.sign-container .submit-btn {
-  color: #ffffff;
-  background-color: #FD5E5E;
-  border-color: #FD5E5E;
+.sign-container button.submit-btn {
+  color: #ffffff !important;
+  background-color: #FD5E5E !important;
+  border-color: #FD5E5E !important;
 }
 
-.sign-container .submit-btn:hover {
-  color: #ffffff;
-  background-color: #ffa1a1;
-  border-color: #ffa1a1;
+.sign-container button.submit-btn:hover {
+  color: #ffffff !important;
+  background-color: #ffa1a1 !important;
+  border-color: #ffa1a1 !important;
 }
+
 
 .sign-container .forgot-password-switch {
   width: 100%;
@@ -967,7 +961,7 @@ button:focus {
   cursor: pointer;
 }
 
-.sign-switch {
+.sign-container .sign-switch {
     text-align: center; 
     margin-top: 10px;
 }
