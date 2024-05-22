@@ -12,8 +12,8 @@ exports.register = async (req, res) => {
     // if (password !== passwordConfirm) {
     //   return res.status(400).json({ message: 'Passwords do not match' });
     // }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
+    res.status(400).json({ message: 'ha'});
+    // const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
       email_address,
       user_name,
