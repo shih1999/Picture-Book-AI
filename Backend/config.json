@@ -1,0 +1,124 @@
+{
+    "user_var": [
+      {
+        "name": "user_id",
+        "primary_key": true,
+        "description": "User's unique identifier",
+        "type": "UUID",
+        "example_value": "123e4567-e89b-12d3-a456-426614174000"
+      },
+      {
+        "name": "email_address",
+        "description": "User's email address",
+        "type": "string",
+        "example_value": "john.doe@example.com"
+      },
+      {
+        "name": "user_name",
+        "description": "User name for display",
+        "type": "string",
+        "example_value": "John"
+      },
+      {
+        "name": "password",
+        "description": "Log in password",
+        "type": "string",
+        "example_value": "Anton0123888"
+      }
+    ],
+
+    "post_var": [
+      {
+        "name": "post_id",
+        "primary_key": true,
+        "description": "Unique identifier for the post",
+        "type": "UUID",
+        "example_value": "123e4567-e89b-12d3-a456-426614174000"
+      },
+      {
+        "name": "user_id",
+        "foreign_key": true,
+        "description": "ID of the user who created the post",
+        "type": "UUID",
+        "example_value": "123e4567-e89b-12d3-a456-426614174001"
+      },
+      {
+        "name": "title",
+        "description": "Text or caption of the post",
+        "type": "string",
+        "example_value": "Small Red Hat and Big Wolf"
+      },
+      {
+        "name": "created_at",
+        "description": "Timestamp of when the post was created",
+        "type": "datetime",
+        "example_value": "2024-05-01T12:34:56Z"
+      },
+      {
+        "name": "likes_count",
+        "description": "Number of likes the post has",
+        "type": "int",
+        "example_value": 123
+      },
+      {
+        "name": "comments_count",
+        "description": "Number of comments on the post",
+        "type": "int",
+        "example_value": 10
+      },
+      {
+        "name": "story_category",
+        "description": "The category of the story",
+        "type": "list",
+        "example_value": ["#Cute", "#Adventure"]
+      }
+    ],
+
+    "detail": [
+      {
+        "name": "page_id",
+        "primary_key": true,
+        "description": "Unique identifier for each page",
+        "type": "UUID",
+        "example_value": "123e4567-e89b-12d3-a456-426614174100"
+      },
+      {
+        "name": "post_id",
+        "foreign_key": true,
+        "description": "Foreign key linking to the post",
+        "type": "UUID",
+        "example_value": "123e4567-e89b-12d3-a456-426614174001"
+      },
+      {
+        "name": "article",
+        "description": "Story article",
+        "type": "string",
+        "example_value": "Red Hat"
+      },
+      {
+        "name": "page_number",
+        "description": "The page number within the post",
+        "type": "int",
+        "example_value": 2
+      },
+      {
+        "name": "image_url",
+        "description": "URL to the image or video",
+        "type": "string",
+        "example_value": "https://example.com/image.jpg"
+      },
+      {
+        "name": "content",
+        "description": "Additional text or description in page",
+        "type": "string",
+        "example_value": "Gramma was eaten by Wolf"
+      },
+      {
+        "name": "published",
+        "description": "Published or not",
+        "type": "bool",
+        "example_value": true
+      }
+    ]
+  }
+  
