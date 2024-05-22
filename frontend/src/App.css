@@ -904,3 +904,70 @@ button:focus {
 .fork-btn-inner::after {
   display: none !important;
 }
+
+/* --------- */
+/* Login */
+/* --------- */
+
+.sign-container {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sign-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sign-container .form-group {
+  margin-bottom: 15px;
+}
+
+.sign-container .form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+.sign-container .btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.sign-container .submit-btn {
+  color: #ffffff;
+  background-color: #FD5E5E;
+  border-color: #FD5E5E;
+}
+
+.sign-container .submit-btn:hover {
+  color: #ffffff;
+  background-color: #ffa1a1;
+  border-color: #ffa1a1;
+}
+
+.sign-container .forgot-password-switch {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+  background: none;
+  border: none;
+  color: #000000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sign-switch {
+    text-align: center; 
+    margin-top: 10px;
+}

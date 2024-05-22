@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 // import Story from "./components/Story/Story";
 // import Library from "./components/Library/Library";
 // import MyStory from "./components/MyStory/MyStory";
-// import Login from "./components/Login/Login";
-// import SignUp from "./components/Login/SignUp";
+import Login from "./components/Login/Login";
+import SignUp from "./components/Login/SignUp";
 // import ThreeLittlePigs from "./components/Library/Mock_story/ThreeLittlePigs/ThreeLittlePigs";
 // import Corgi from "./components/MyStory/Mock_story/ThreeLittlePigs/Corgi";
 // import ViewMyStory from "./components/MyStory/ViewMyStory";
@@ -49,8 +49,8 @@ function App() {
             {/* <Route path="/library" element={<Library />} /> */}
             {/* <Route path="/viewstory/:bookID" element={<ViewStory />} /> */}
             {/* <Route path="/mystory" element={<MyStory />} /> */}
-            {/* <Route path="/login" element={<Login />} /> */}
-            {/* <Route path="/signup" element={<SignUp />} /> */}
+            {<Route path="/login" element={<Login />} />}
+            {<Route path="/signup" element={<SignUp />} />}
             <Route path="*" element={<Navigate to="/" />} />
             {/* <Route path="/story" element={<Story />} /> */}
             {/* <Route path="/corgi" element={<Corgi />} /> */}
