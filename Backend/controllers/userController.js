@@ -1,5 +1,4 @@
 const { User } = require('../models');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -9,29 +8,46 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
 exports.register = async (req, res) => {
   const { email_address, user_name, password } = req.body;
   try {
-    // if (password !== passwordConfirm) {
-    //   return res.status(400).json({ message: 'Passwords do not match' });
-    // }
-    res.status(400).json({ message: 'ha'});
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
-      email_address,
-      user_name,
-      password: hashedPassword
-    });
-
-    const token = jwt.sign({ userId: user.user_id }, SECRET_KEY, { expiresIn: JWT_EXPIRES_IN });
-
+    // const user = await User.create({
+    //   email_address,
+    //   user_name,
+    //   password
+    // });
     res.status(201).json({
       message: 'User created',
-      token,
-      user
+      User
     });
-
+    // res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     res.status(400).json({ message: 'Error creating user', error });
   }
 };
+// exports.register = async (req, res) => {
+//   const { email_address, user_name, password } = req.body;
+//   try {
+//     // if (password !== passwordConfirm) {
+//     //   return res.status(400).json({ message: 'Passwords do not match' });
+//     // }
+//     res.status(400).json({ message: 'ha'});
+//     // const hashedPassword = await bcrypt.hash(password, 10);
+//     const user = await User.create({
+//       email_address,
+//       user_name,
+//       password: hashedPassword
+//     });
+
+//     const token = jwt.sign({ userId: user.user_id }, SECRET_KEY, { expiresIn: JWT_EXPIRES_IN });
+
+//     res.status(201).json({
+//       message: 'User created',
+//       token,
+//       user
+//     });
+
+//   } catch (error) {
+//     res.status(400).json({ message: 'Error creating user', error });
+//   }
+// };
 
 exports.login = async (req, res) => {
   const { user_name, password } = req.body;

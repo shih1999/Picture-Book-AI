@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     created_at: DataTypes.DATE,
     likes_count: DataTypes.INTEGER,
     comments_count: DataTypes.INTEGER,
-    story_category: DataTypes.ARRAY
+    // story_category: DataTypes.ARRAY
   }, {
     sequelize,
     modelName: 'post',

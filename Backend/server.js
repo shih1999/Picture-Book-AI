@@ -6,10 +6,11 @@ const bodyParser = require('body-parser');
 const userRouter = require('./routes/user');
 const detailRouter = require('./routes/detail');
 const postRouter = require('./routes/post');
+const cors = require('cors');
 const postDetailRouter = require('./routes/postDetail');
 
 const app = express();
-
+app.use(cors());
 app.use(bodyParser.json());
 
 // 使用用户路由
@@ -24,7 +25,7 @@ const PORT = process.env.PORT || 4000;
 const startServer = async () => {
   try {
     // await sequelize.authenticate();
-    console.log('Database connected successfully.');
+    // console.log('Database connected successfully.');
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });
