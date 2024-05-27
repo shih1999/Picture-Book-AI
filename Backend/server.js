@@ -1,8 +1,8 @@
 require("dotenv").config(); // ALLOWS ENVIRONMENT VARIABLES TO BE SET ON PROCESS.ENV SHOULD BE AT TOP
-
+const cors = require('cors');
 const express = require("express");
 const app = express();
-
+app.use(cors());
 // Middleware
 app.use(express.json()); // parse json bodies in the request object
 

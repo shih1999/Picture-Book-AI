@@ -21,16 +21,15 @@ function SignUp() {
         const payload = {
             email_address: email,
             user_name: username,
-            password: password
+            user_password: password
         };
 
         try {
-            const response = await axios.post('http://localhost:4000/users/register',
+            const response = await axios.post('http://localhost:4000/users/register',payload,
             {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(payload),
             });
 
             const data = response.data;
