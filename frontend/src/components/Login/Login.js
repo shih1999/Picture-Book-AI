@@ -13,16 +13,15 @@ function Login() {
 
         const payload = {
             user_name: username,
-            password: password,
+            user_password: password,
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login',
+            const response = await axios.post('http://localhost:4000/users/signin',payload,
             {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(payload),
             });
 
             const data = response.data;

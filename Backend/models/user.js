@@ -26,12 +26,15 @@ class User {
             '${this.user_password}'
         )
         `;
-        const [newUser, _] = await db.execute(sql);
 
-        return newUser;
+        return db.execute(sql);
     }
     static findAll(){
 
+    }
+    static findByName(user_name) {
+        let sql = `SELECT * FROM users WHERE user_name = ?`;
+        return db.execute(sql, [user_name]);
     }
 }
 
