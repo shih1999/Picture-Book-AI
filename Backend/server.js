@@ -1,37 +1,25 @@
-// app.js
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-// const { sequelize } = require('../xxx/models');
-const userRouter = require('./routes/user');
-const detailRouter = require('./routes/detail');
-const postRouter = require('./routes/post');
-const cors = require('cors');
-const postDetailRouter = require('./routes/postDetail');
+require("dotenv").config(); // ALLOWS ENVIRONMENT VARIABLES TO BE SET ON PROCESS.ENV SHOULD BE AT TOP
 
+const express = require("express");
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
 
-// 使用用户路由
-app.use('/user', userRouter);
-app.use('/detail', detailRouter);
-app.use('/post', postRouter);
-app.use('/postDetail', postDetailRouter);
+// Middleware
+app.use(express.json()); // parse json bodies in the request object
 
-// 启动服务器
+// Redirect requests to endpoint starting with /posts to postRoutes.js
+app.use("/users", require("./routes/userRoutes"));
+
+// Global Error Handler. IMPORTANT function params MUST start with err
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  console.log(err.name);
+  console.log(err.code);
+
+  res.status(500).json({
+    message: "Something went rely wrong",
+  });
+});
+
+// Listen on pc port
 const PORT = process.env.PORT || 4000;
-
-const startServer = async () => {
-  try {
-    // await sequelize.authenticate();
-    // console.log('Database connected successfully.');
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-};
-
-startServer();
+app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
