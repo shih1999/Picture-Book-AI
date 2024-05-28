@@ -1,13 +1,13 @@
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 exports.createNewUser = async (req, res, next) => {
     let { email_address, user_name, user_password } = req.body;
     try {
-        let user = new User(email_address, user_name, user_password);
-        user = await user.save();
-        console.log(user);
-        res.status(201).json({ message: "User created successfully", user });
+        let users = new User(email_address, user_name, user_password);
+        users = await users.save();
+        console.log(users);
+        res.status(201).json({ message: "User created successfully", users });
     } catch (error) {
         res.status(500).json({ message: 'Error creating user', error });
     }
@@ -21,7 +21,6 @@ exports.checkUser = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        // 验证密码
         // const isMatch = await bcrypt.compare(user_password, user.user_password);
         if (user_password==user.user_password) {
             res.status(200).json({ message: 'User validated successfully', user });

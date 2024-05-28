@@ -7,7 +7,7 @@ router
     .route("/register")
     .post(userControllers.createNewUser);
 router
-    .route("/signin")
+    .route("/login")
     .post(userControllers.checkUser);
 
 // router.route("/:id").get(userControllers.getPostById);

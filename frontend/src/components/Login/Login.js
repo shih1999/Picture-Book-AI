@@ -17,7 +17,7 @@ function Login() {
         };
 
         try {
-            const response = await axios.post('http://localhost:4000/users/signin',payload,
+            const response = await axios.post('http://localhost:4000/users/login',payload,
             {
                 headers: {
                     'Content-Type': 'application/json',
