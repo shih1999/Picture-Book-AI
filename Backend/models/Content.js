@@ -40,10 +40,22 @@ class Content {
         const [result] = await db.execute(sql, values);
         return result.affectedRows; 
     }
-    // static findById(user_id) {
-    //     let sql = `SELECT * FROM posts WHERE user_id = ?`;
-    //     return db.execute(sql, [user_id]);
-    // }
+
+    static async findByPostId(post_id){
+        let sql = `SELECT * FROM contents WHERE post_id = ?`;
+        const [rows] = await db.execute(sql, [post_id]);
+        return rows; 
+    }
+    static async findcover(post_id) {
+        let sql = `
+            SELECT * FROM contents 
+            WHERE post_id = ? AND image_url IS NOT NULL AND image_url != 'undefined'
+            ORDER BY page_number ASC 
+            LIMIT 1
+        `;
+        const [rows] = await db.execute(sql, [post_id]);
+        return rows[0];
+    }
 }
 
 module.exports = Content;

@@ -102,3 +102,19 @@ exports.modifyPost = async (req, res, next) => {
         next(error); 
     }
 };
+
+exports.changePublish = async (req, res, next) => {
+    try {
+        const postId = req.params.post_id; 
+        
+        const affectedRows = await Post.updatePublish(postId);
+        
+        if (affectedRows > 0) {
+            res.status(200).json({ message: 'Publish status modified successfully.' });
+        } else {
+            res.status(404).json({ message: 'Publish not found.' });
+        }
+    } catch (error) {
+        next(error); 
+    }
+};

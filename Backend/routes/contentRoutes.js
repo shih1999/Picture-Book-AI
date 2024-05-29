@@ -8,11 +8,15 @@ router
     .post(contentControllers.createNewContent);
 
 router
-    .route("/publish/:post_id")
-    .put(contentControllers.changePublish);
-
-router
     .route("/modify/:page_id")
     .put(contentControllers.contentModify);
+
+router
+    .route("/:post_id")
+    .get(contentControllers.getPostAllPage);
+
+router
+    .route("/cover/:post_id")
+    .get(contentControllers.findFirstPageWithImage);
 
 module.exports = router;

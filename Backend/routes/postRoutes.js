@@ -24,9 +24,13 @@ router
     .get(postControllers.getUserAllPost);
 
 router
+    .route('/publish/:post_id')
+    .put(postControllers.changePublish);
+
+router
     .route('/')
     .get(postControllers.getAllPost);
-
+//要加上publish 變動
 // router.route("/:id").get(userControllers.getPostById);
 
 module.exports = router;

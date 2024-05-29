@@ -81,6 +81,20 @@ class Post {
         const [result] = await db.execute(sql, [post_id]);
         return result.affectedRows; 
     }
+    static async updatePublish(post_id) {
+        let sql = `
+        UPDATE posts 
+        SET published = CASE 
+            WHEN published = 0 THEN 1
+            ELSE 0
+        END 
+        WHERE post_id = ?`;
+    
+        const values = [post_id];
+        const [result] = await db.execute(sql, values);
+        return result.affectedRows; 
+    }
+    
     // static deleteByPostId(post_id) {
     //     let sql = `DELETE FROM posts WHERE post_id = ?`;
     //     return db.execute(sql, [post_id]);

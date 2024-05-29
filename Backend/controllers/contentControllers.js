@@ -22,23 +22,6 @@ exports.createNewContent = async (req, res, next) => {
     }
 }
 
-exports.changePublish = async (req, res, next) => {
-    try {
-        const postId = req.params.post_id; 
-        const publish = req.body.published; 
-        
-        const affectedRows = await Content.updatePublish(postId, publish);
-        
-        if (affectedRows > 0) {
-            res.status(200).json({ message: 'Publish status modified successfully.' });
-        } else {
-            res.status(404).json({ message: 'Content not found.' });
-        }
-    } catch (error) {
-        next(error); 
-    }
-};
-
 exports.contentModify = async (req, res, next) => {
     try {
         const pageId = req.params.page_id; 
@@ -52,5 +35,35 @@ exports.contentModify = async (req, res, next) => {
         }
     } catch (error) {
         next(error); 
+    }
+};
+
+exports.getPostAllPage = async (req, res, next) => {
+    try {
+        const postId = req.params.post_id; 
+        const postPages = await Content.findByPostId(postId);
+        
+        if (postPages.length > 0) {
+            res.status(200).json({ message: 'User posts retrieved successfully.', postPages });
+        } else {
+            res.status(404).json({ message: 'No posts found for this user.' });
+        }
+    } catch (error) {
+        next(error); 
+    }
+};
+
+exports.findFirstPageWithImage = async (req, res, next) => {
+    try {
+        const postId = req.params.post_id;
+        const postPage = await Content.findcover(postId);
+
+        if (postPage) {
+            res.status(200).json({ message: 'Post cover retrieved successfully.', postPage });
+        } else {
+            res.status(404).json({ message: 'No post cover found for this post_id with a non-null image URL.' });
+        }
+    } catch (error) {
+        next(error);
     }
 };
