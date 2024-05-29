@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
-// import Story from "./components/Story/Story";
+import Story from "./components/Create/Story";
 // import Library from "./components/Library/Library";
 // import MyStory from "./components/MyStory/MyStory";
 import Login from "./components/Login/Login";
@@ -52,7 +52,7 @@ function App() {
             {<Route path="/login" element={<Login />} />}
             {<Route path="/signup" element={<SignUp />} />}
             <Route path="*" element={<Navigate to="/" />} />
-            {/* <Route path="/story" element={<Story />} /> */}
+            <Route path="/story" element={<Story />} />
             {/* <Route path="/corgi" element={<Corgi />} /> */}
             {/* <Route path="/littlethreepigs" element={<ThreeLittlePigs />} /> */}
             {/* <Route path="/ViewMyStory/:bookId" element={<ViewMyStory />} /> */}
