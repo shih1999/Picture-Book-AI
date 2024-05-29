@@ -16,8 +16,13 @@ router
     .put(postControllers.likePost);
 
 router
-    .route('/comment/:post_id')
-    .put(postControllers.commentPost);
+    .route('/modify/:post_id')
+    .put(postControllers.modifyPost);
+
+router
+    .route('/:user_id')
+    .get(postControllers.getAllUserPost);
+
 // router.route("/:id").get(userControllers.getPostById);
 
 module.exports = router;

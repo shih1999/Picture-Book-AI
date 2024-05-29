@@ -39,6 +39,24 @@ class Post {
         const [rows] = await db.execute(sql, [post_id]);
         return rows; 
     }
+    
+    static async updatePost(post_id, updateData) {
+
+        const updateFields = Object.keys(updateData).map(field => `${field} = ?`).join(', ');
+        const values = Object.values(updateData);
+        
+        let sql = `UPDATE posts SET ${updateFields} WHERE post_id = ?`;
+        values.push(post_id);
+    
+        const [result] = await db.execute(sql, values);
+        return result.affectedRows; 
+    }
+
+    static async findByUserId(user_id){
+        let sql = `SELECT * FROM posts WHERE user_id = ?`;
+        const [rows] = await db.execute(sql, [user_id]);
+        return rows; 
+    }
 
     static async updateLikesCount(post_id, likes_count) {
         let sql = `UPDATE posts SET likes_count = ? WHERE post_id = ?`;

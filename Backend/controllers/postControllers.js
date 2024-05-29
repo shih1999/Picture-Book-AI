@@ -1,7 +1,6 @@
 const Post = require('../models/Post');
 
 exports.createNewPost = async (req, res, next) => {
-    // res.send("yooo");
     let { 
         user_id,
         title,
@@ -55,30 +54,37 @@ exports.likePost = async (req, res, next) => {
             res.status(500).json({ message: 'Failed to update post.' });
         }
     } catch (error) {
-        next(error); // 将错误传递给下一个中间件（如错误处理器）
+        next(error); 
     }
 };
 
-exports.commentPost = async (req, res, next) => {
+exports.getAllUserPost = async (req, res, next) => {
     try {
-        const postId = req.params.post_id;
-        const posts = await Post.findByPostId(postId);
-
-        if (posts.length === 0) {
-            return res.status(404).json({ message: 'Post not found.' });
-        }
-
-        const post = posts[0];
-        const newCommentsCount = post.comments_count + 1;
-
-        const result = await Post.updateCommentsCount(postId, newCommentsCount);
-
-        if (result > 0) {
-            res.status(200).json({ message: 'Post liked successfully.', comments_count: newCommentsCount });
+        const userId = req.params.user_id; 
+        const userPosts = await Post.findByUserId(userId);
+        
+        if (userPosts.length > 0) {
+            res.status(200).json({ message: 'User posts retrieved successfully.', userPosts });
         } else {
-            res.status(500).json({ message: 'Failed to update post.' });
+            res.status(404).json({ message: 'No posts found for this user.' });
         }
     } catch (error) {
-        next(error); // 将错误传递给下一个中间件（如错误处理器）
+        next(error); 
+    }
+};
+
+exports.modifyPost = async (req, res, next) => {
+    try {
+        const postId = req.params.post_id; 
+        const updateData = req.body; 
+        const affectedRows = await Post.updatePost(postId, updateData);
+        
+        if (affectedRows > 0) {
+            res.status(200).json({ message: 'Post modified successfully.' });
+        } else {
+            res.status(404).json({ message: 'Post not found.' });
+        }
+    } catch (error) {
+        next(error); 
     }
 };
