@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import axios from 'axios';
 
@@ -26,10 +26,14 @@ function Login() {
 
             const data = response.data;
 
-            if (response.ok) {
-                alert('Login successful');
-            } else {
+            if (response.status === 200) {
+                alert("Login successful !");
+            } else if (response.status === 404) {
+                alert("Account not found");
+            } else if (response.status === 401) {
                 alert(data.message);
+            } else {
+                alert('Error login user');
             }
         } catch (error) {
             console.error('Error:', error);

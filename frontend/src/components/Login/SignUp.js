@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import axios from 'axios';
 
@@ -34,10 +34,12 @@ function SignUp() {
 
             const data = response.data;
 
-            if (response.ok) {
-                alert('User registered successfully');
-            } else {
+            if (response.status === 201) {
                 alert(data.message);
+            } else if (response.status === 500){
+                alert(data.message);
+            } else {
+                alert('Error registering user');
             }
         } catch (error) {
             console.error('Error:', error);
