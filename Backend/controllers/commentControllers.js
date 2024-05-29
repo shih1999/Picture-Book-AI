@@ -43,7 +43,7 @@ exports.modifyComment = async (req, res, next) => {
         const affectedRows = await Comment.updateComments(commentId, commentText);
         
         if (affectedRows > 0) {
-            res.status(200).json({ message: 'Comment deleted successfully.' });
+            res.status(200).json({ message: 'Comment modified successfully.' });
         } else {
             res.status(404).json({ message: 'Comment not found.' });
         }

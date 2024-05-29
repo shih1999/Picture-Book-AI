@@ -3,20 +3,16 @@ const Content = require('../models/Content');
 exports.createNewContent = async (req, res, next) => {
     let { 
         post_id,
-        article,
         page_number,
         image_url,
-        content,
-        published
+        content
         } = req.body;
     try {
         let contents = new Content(
             post_id,
-            article,
             page_number,
             image_url,
-            content,
-            published
+            content
         );
         contents = await contents.save();
         console.log(contents);
@@ -28,9 +24,10 @@ exports.createNewContent = async (req, res, next) => {
 
 exports.changePublish = async (req, res, next) => {
     try {
-        const postId = req.params.post_id; // 從請求參數中獲取 post_id
-        const publishbool = req.body.published;
-        const affectedRows = await Content.updatePublish(postId,publishbool);
+        const postId = req.params.post_id; 
+        const publish = req.body.published; 
+        
+        const affectedRows = await Content.updatePublish(postId, publish);
         
         if (affectedRows > 0) {
             res.status(200).json({ message: 'Publish status modified successfully.' });

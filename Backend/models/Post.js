@@ -34,12 +34,12 @@ class Post {
         return db.execute(sql);
     }
 
-    static async findByPostId(post_id){
-        let sql = `SELECT * FROM posts WHERE post_id = ?`;
+    static async findByPostId(post_id) {
+        let sql = `SELECT * FROM posts WHERE post_id = ? `;
         const [rows] = await db.execute(sql, [post_id]);
         return rows; 
     }
-    
+
     static async updatePost(post_id, updateData) {
 
         const updateFields = Object.keys(updateData).map(field => `${field} = ?`).join(', ');
@@ -52,9 +52,9 @@ class Post {
         return result.affectedRows; 
     }
 
-    static async findByUserId(user_id){
-        let sql = `SELECT * FROM posts WHERE user_id = ?`;
-        const [rows] = await db.execute(sql, [user_id]);
+    static async findByUserId(user_id, p){
+        let sql = `SELECT * FROM posts WHERE user_id = ? AND published = ?`;
+        const [rows] = await db.execute(sql, [user_id,p]);
         return rows; 
     }
 
@@ -69,9 +69,13 @@ class Post {
         const [result] = await db.execute(sql, [comments_count, post_id]);
         return result.affectedRows; 
     }
-    static findAll(){
 
+    static async findAll(){
+        let sql = `SELECT * FROM posts`;
+        const [rows] = await db.execute(sql);
+        return rows; 
     }
+
     static async deleteByPostId(post_id) {
         let sql = `DELETE FROM posts WHERE post_id = ?`;
         const [result] = await db.execute(sql, [post_id]);

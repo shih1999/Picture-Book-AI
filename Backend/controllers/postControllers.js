@@ -11,7 +11,6 @@ exports.createNewPost = async (req, res, next) => {
             story_category
         );
         post = await post.save();
-        console.log(post);
         res.status(201).json({ message: "Post created successfully", post });
     } catch (error) {
         res.status(500).json({ message: 'Error creating post', error });
@@ -58,15 +57,30 @@ exports.likePost = async (req, res, next) => {
     }
 };
 
-exports.getAllUserPost = async (req, res, next) => {
+exports.getUserAllPost = async (req, res, next) => {
     try {
         const userId = req.params.user_id; 
-        const userPosts = await Post.findByUserId(userId);
+        const pub = req.params.p; 
+        const userPosts = await Post.findByUserId(userId,pub);
         
         if (userPosts.length > 0) {
             res.status(200).json({ message: 'User posts retrieved successfully.', userPosts });
         } else {
             res.status(404).json({ message: 'No posts found for this user.' });
+        }
+    } catch (error) {
+        next(error); 
+    }
+};
+
+exports.getAllPost = async (req, res, next) => {
+    try {
+        const Posts = await Post.findAll();
+
+        if (Posts.length > 0) {
+            res.status(200).json({ message: 'All posts retrieved successfully.', Posts });
+        } else {
+            res.status(404).json({ message: 'No posts.' });
         }
     } catch (error) {
         next(error); 

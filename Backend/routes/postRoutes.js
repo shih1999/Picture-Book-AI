@@ -20,8 +20,12 @@ router
     .put(postControllers.modifyPost);
 
 router
-    .route('/:user_id')
-    .get(postControllers.getAllUserPost);
+    .route('/:user_id/:p')
+    .get(postControllers.getUserAllPost);
+
+router
+    .route('/')
+    .get(postControllers.getAllPost);
 
 // router.route("/:id").get(userControllers.getPostById);
 
