@@ -36,14 +36,15 @@ function SignUp() {
 
             if (response.status === 201) {
                 alert(data.message);
-            } else if (response.status === 500){
-                alert(data.message);
             } else {
                 alert('Error registering user');
             }
         } catch (error) {
-            console.error('Error:', error);
+            if (response.status === 500){
+                alert(data.message);
+            } else {
             alert('Error registering user');
+            }
         }
     };
 
