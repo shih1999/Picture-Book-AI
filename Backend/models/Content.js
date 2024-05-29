@@ -35,6 +35,18 @@ class Content {
     static findAll(){
 
     }
+    static async updateContent(page_id, updateData) {
+
+        const updateFields = Object.keys(updateData).map(field => `${field} = ?`).join(', ');
+        const values = Object.values(updateData);
+        
+        let sql = `UPDATE contents SET ${updateFields} WHERE page_id = ?`;
+        values.push(page_id);
+    
+        const [result] = await db.execute(sql, values);
+        return result.affectedRows; 
+    }
+    
     // static findById(user_id) {
     //     let sql = `SELECT * FROM posts WHERE user_id = ?`;
     //     return db.execute(sql, [user_id]);

@@ -33,12 +33,35 @@ class Post {
         
         return db.execute(sql);
     }
+
+    static async findByPostId(post_id){
+        let sql = `SELECT * FROM posts WHERE post_id = ?`;
+        const [rows] = await db.execute(sql, [post_id]);
+        return rows; 
+    }
+
+    static async updateLikesCount(post_id, likes_count) {
+        let sql = `UPDATE posts SET likes_count = ? WHERE post_id = ?`;
+        const [result] = await db.execute(sql, [likes_count, post_id]);
+        return result.affectedRows; 
+    }
+
+    static async updateCommentsCount(post_id, comments_count) {
+        let sql = `UPDATE posts SET comments_count = ? WHERE post_id = ?`;
+        const [result] = await db.execute(sql, [comments_count, post_id]);
+        return result.affectedRows; 
+    }
     static findAll(){
 
     }
-    // static findById(user_id) {
-    //     let sql = `SELECT * FROM posts WHERE user_id = ?`;
-    //     return db.execute(sql, [user_id]);
+    static async deleteByPostId(post_id) {
+        let sql = `DELETE FROM posts WHERE post_id = ?`;
+        const [result] = await db.execute(sql, [post_id]);
+        return result.affectedRows; 
+    }
+    // static deleteByPostId(post_id) {
+    //     let sql = `DELETE FROM posts WHERE post_id = ?`;
+    //     return db.execute(sql, [post_id]);
     // }
 }
 

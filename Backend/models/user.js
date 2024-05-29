@@ -32,6 +32,7 @@ class User {
     static findAll(){
 
     }
+    
     static findByName(user_name) {
         let sql = `SELECT * FROM users WHERE user_name = ?`;
         return db.execute(sql, [user_name]);
