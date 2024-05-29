@@ -23,7 +23,7 @@ exports.createNewComment = async (req, res, next) => {
 
 exports.deleteComment = async (req, res, next) => {
     try {
-        const commentId = req.params.comment_id; // 從請求參數中獲取 post_id
+        const commentId = req.params.comment_id; 
         const affectedRows = await Comment.deleteByPostId(commentId);
         
         if (affectedRows > 0) {
