@@ -24,21 +24,11 @@ function Login() {
                 },
             });
 
-            const data = response.data;
-
             if (response.status === 200) {
                 alert("Login successful");
-            } else {
-                alert('Error login user');
             }
         } catch (error) {
-            if (response.status === 404) {
-                alert("Account not found");
-            } else if (response.status === 401) {
-                alert(data.message);
-            } else {
-                alert('Error login user');
-            }
+            alert('Wrong user name or password');
         }
     };
 
