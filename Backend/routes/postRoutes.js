@@ -28,8 +28,10 @@ router
     .put(postControllers.changePublish);
 
 router
-    .route('/')
+    .route('/:story_category')
     .get(postControllers.getAllPost);
+
+
 //要加上publish 變動
 // router.route("/:id").get(userControllers.getPostById);
 

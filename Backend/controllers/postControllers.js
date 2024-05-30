@@ -75,7 +75,25 @@ exports.getUserAllPost = async (req, res, next) => {
 
 exports.getAllPost = async (req, res, next) => {
     try {
-        const Posts = await Post.findAll();
+        
+        const way = req.params.method; 
+        const Posts = await Post.findAll(way);
+
+        if (Posts.length > 0) {
+            res.status(200).json({ message: 'All posts retrieved successfully.', Posts });
+        } else {
+            res.status(404).json({ message: 'No posts.' });
+        }
+    } catch (error) {
+        next(error); 
+    }
+};
+
+exports.getAllPost = async (req, res, next) => {
+    try {
+        
+        const category = req.params.story_category; 
+        const Posts = await Post.findAllCategory(category);
 
         if (Posts.length > 0) {
             res.status(200).json({ message: 'All posts retrieved successfully.', Posts });

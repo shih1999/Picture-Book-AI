@@ -70,12 +70,17 @@ class Post {
         return result.affectedRows; 
     }
 
-    static async findAll(){
-        let sql = `SELECT * FROM posts`;
+    static async findAll(orderBy){
+        let sql = `SELECT * FROM posts ORDER BY ${orderBy} DESC`;
         const [rows] = await db.execute(sql);
         return rows; 
     }
-
+    static async findAllCategory(category){
+        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY likes_count DESC`;
+        const [rows] = await db.execute(sql,[category]);
+        return rows; 
+    }
+    
     static async deleteByPostId(post_id) {
         let sql = `DELETE FROM posts WHERE post_id = ?`;
         const [result] = await db.execute(sql, [post_id]);
