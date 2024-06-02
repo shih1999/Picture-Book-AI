@@ -12,6 +12,7 @@ const ChildBookEditor = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
+  const [postID, setPostID] = useState();
 
   const handleAddPage = () => {
     const newPage = { id: pages.length + 1, image: null, text: '', layout:"image-right"};
@@ -74,6 +75,7 @@ const ChildBookEditor = () => {
 
   const SaveEveryPages = async (page) =>{
     let payload = {
+      post_id: postID,
       page_number: page.id,
       image_url: page.image,
       content: page.text,
@@ -99,11 +101,8 @@ const ChildBookEditor = () => {
   };
 
   const handleSave = async () => {
-    for (let i = 0; i < pages.length; i += 1){
-      // await console.log(pages[i])
-      await SaveEveryPages(pages[i]);
-    };
     const payload = {
+      user_id: localStorage.getItem("uid"),
       title: title,
       story_category: localStorage.getItem("style")
     };
@@ -117,7 +116,13 @@ const ChildBookEditor = () => {
     //     });
   
     //     const data = response.data;
-  
+        
+    //     if (response.status === 200) {
+    //       // alert("Login successful");
+    //       setPostID(data.post_id);
+          
+    //     }
+
     //     if (response.status === 201) {
     //         alert(data.message);
     //     }
@@ -125,6 +130,13 @@ const ChildBookEditor = () => {
     //       alert('Error registering user');
     //   }
     console.log(payload)
+
+    for (let i = 0; i < pages.length; i += 1){
+      // await console.log(pages[i])
+      await SaveEveryPages(pages[i]);
+    };
+    
+    
 
     
   };
