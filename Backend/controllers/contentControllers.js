@@ -5,14 +5,16 @@ exports.createNewContent = async (req, res, next) => {
         post_id,
         page_number,
         image_url,
-        content
+        content,
+        layout
         } = req.body;
     try {
         let contents = new Content(
             post_id,
             page_number,
             image_url,
-            content
+            content,
+            layout
         );
         contents = await contents.save();
         console.log(contents);

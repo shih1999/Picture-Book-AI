@@ -1,11 +1,12 @@
 const db = require('../config/db')
 
 class Content {
-    constructor(post_id,page_number,image_url,content){
+    constructor(post_id,page_number,image_url,content,layout){
         this.post_id = post_id;
         this.page_number = page_number;
         this.image_url = image_url;
         this.content = content;
+        this.layout = layout;
     }
     async save() {
 
@@ -14,13 +15,15 @@ class Content {
             post_id,
             page_number,
             image_url,
-            content
+            content,
+            layout
         ) 
         VALUES(
             '${this.post_id}',
             '${this.page_number}',
             '${this.image_url}',
-            '${this.content}'
+            '${this.content}',
+            '${this.layout}'
         )
         `;
         
