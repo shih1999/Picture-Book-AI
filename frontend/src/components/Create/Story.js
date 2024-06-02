@@ -14,6 +14,11 @@ const ChildBookEditor = () => {
   const [title, setTitle] = useState("");
   const [postID, setPostID] = useState();
 
+
+  const goBackToHomePage = () =>{
+    window.location.href = "/";
+  };
+
   const handleAddPage = () => {
     const newPage = { id: pages.length + 1, image: null, text: '', layout:"image-right"};
     setPages([...pages, newPage]);
@@ -81,7 +86,7 @@ const ChildBookEditor = () => {
       content: page.text,
       layout: page.layout
     };
-    console.log(payload)
+    console.log(payload);
     // try {
     //   const response = await axios.post('http://localhost:4000/contents/create',payload,
     //   {
@@ -97,7 +102,7 @@ const ChildBookEditor = () => {
     //   }
     // } catch (error) {
     //     alert('Error registering user');
-    // }
+    // };
   };
 
   const handleSave = async () => {
@@ -128,15 +133,15 @@ const ChildBookEditor = () => {
     //     }
     //   } catch (error) {
     //       alert('Error registering user');
-    //   }
-    console.log(payload)
+    //   };
+    console.log(payload);
 
     for (let i = 0; i < pages.length; i += 1){
       // await console.log(pages[i])
       await SaveEveryPages(pages[i]);
     };
     
-    
+    await goBackToHomePage();
 
     
   };
@@ -153,7 +158,7 @@ const ChildBookEditor = () => {
           />
         </Col>
         <Col>
-          <Button variant="primary" onClick={handleSave} href='/'>
+          <Button variant="primary" onClick={handleSave} >
             Save Story
           </Button>
         </Col>

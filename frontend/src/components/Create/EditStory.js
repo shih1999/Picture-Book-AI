@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
@@ -12,6 +12,19 @@ const EditStory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://web-app-backend-r3ac.onrender.com/book")
+      .then((res) => {
+        setBooks(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
 
   const handleAddPage = () => {
     const newPage = { id: pages.length + 1, image: null, text: '', layout:"image-right"};
