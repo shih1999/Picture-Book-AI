@@ -33,7 +33,8 @@ function NavBar() {
   let user_id = localStorage.getItem("uid");
 
   const logout = () => {
-    localStorage.setItem("uid", "");
+    // localStorage.setItem("uid", "");
+    localStorage.clear();
     window.location.href = "/";
   }
   window.addEventListener("scroll", scrollHandler);
