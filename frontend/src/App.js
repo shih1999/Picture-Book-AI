@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
 import Story from "./components/Create/Story";
-// import Library from "./components/Library/Library";
+import Library from "./components/Library/Library";
 import MyStory from "./components/MyStory/MyStory";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
@@ -46,7 +46,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ChooseStyle" element={<ChooseStyle />} />
-            {/* {<Route path="/library" element={<Library />} />} */}
+            {<Route path="/library" element={<Library />} />}
             {/* <Route path="/viewstory/:bookID" element={<ViewStory />} /> */}
             {<Route path="/mystory" element={<MyStory />} />}
             {<Route path="/login" element={<Login />} />}
