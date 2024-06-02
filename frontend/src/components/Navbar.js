@@ -35,20 +35,7 @@ function NavBar() {
 
   const logout = () => {
     localStorage.setItem("uid", "");
-    var access_token = "";
-    access_token = localStorage.getItem("access_token");
-    axios.post('https://web-app-backend-r3ac.onrender.com/logout', null,{ headers: {Authorization : `Bearer ${access_token}`}})
-      .then(res => {
-        console.log(res.data);
-        window.open('/', '_self');
-      })
-      .catch(error => {
-
-        console.error('Error:', error);
-      });
-      // setLogin(true);
-      // window.open('/', '_blank');
-      localStorage.clear();
+    window.location.href = "/";
   }
   window.addEventListener("scroll", scrollHandler);
 
@@ -97,7 +84,7 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
-                to="/Community"
+                to="/Library"
                 onClick={() => updateExpanded(false)}
               >
                 <GrGroup style={{ marginBottom: "2px" }} /> Community
