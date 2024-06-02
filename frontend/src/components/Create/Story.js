@@ -121,10 +121,11 @@ const ChildBookEditor = () => {
     //     });
   
     //     const data = response.data;
-        
+    //     console.log(data);
     //     if (response.status === 200) {
     //       // alert("Login successful");
     //       setPostID(data.post_id);
+          
           
     //     }
 
@@ -142,6 +143,7 @@ const ChildBookEditor = () => {
     };
     
     await goBackToHomePage();
+
 
     
   };
