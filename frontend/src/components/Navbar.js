@@ -30,7 +30,6 @@ function NavBar() {
   // localStorage.setItem("uid", 1);
   // localStorage.setItem("uname", "Bob");
 
-  let login = localStorage.getItem("access_token");
   let user_id = localStorage.getItem("uid");
 
   const logout = () => {
