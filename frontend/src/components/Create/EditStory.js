@@ -5,7 +5,7 @@ import axios from 'axios';
 // import { text } from 'body-parser';
 
 
-const ChildBookEditor = () => {
+const EditStory = () => {
   const [pages, setPages] = useState([{ id: 1, image: null, text: '' , layout:"image-right"}]);
   const [currentPage, setCurrentPage] = useState(1);
   // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
@@ -96,35 +96,14 @@ const ChildBookEditor = () => {
     // } catch (error) {
     //     alert('Error registering user');
     // }
-  };
+  }
 
   const handleSave = async () => {
     for (let i = 0; i < pages.length; i += 1){
       // await console.log(pages[i])
       await SaveEveryPages(pages[i]);
     };
-    const payload = {
-      title: title,
-      story_category: localStorage.getItem("style")
-    };
 
-    // try {
-    //     const response = await axios.post('http://localhost:4000/posts/create',payload,
-    //     {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-  
-    //     const data = response.data;
-  
-    //     if (response.status === 201) {
-    //         alert(data.message);
-    //     }
-    //   } catch (error) {
-    //       alert('Error registering user');
-    //   }
-    console.log(payload)
 
     
   };
@@ -141,7 +120,7 @@ const ChildBookEditor = () => {
           />
         </Col>
         <Col>
-          <Button variant="primary" onClick={handleSave} href='/'>
+          <Button variant="primary" onClick={handleSave}>
             Save Story
           </Button>
         </Col>

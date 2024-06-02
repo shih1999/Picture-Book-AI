@@ -42,6 +42,6 @@ CREATE TABLE `Story`.`comments`(
  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE,
  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE);
  
- SELECT * FROM contents;
+SELECT * FROM contents;
 SELECT * FROM posts;
 SELECT * FROM comments;

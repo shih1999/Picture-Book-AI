@@ -6,6 +6,7 @@ const pool = mysql.createPool({
     user: process.env.DB_USER, 
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT
 });
 // let sql = "SELECT * FROM posts;";
 // pool.execute(sql, function (err, result) {
