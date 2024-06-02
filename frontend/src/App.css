@@ -14,6 +14,7 @@ html {
   --imp-text-color: #FFF4F4;
 }
 
+
 .red {
   color: var(--imp-text-color) !important;
 }
@@ -614,10 +615,30 @@ button:focus {
   text-align: center;  
 }
 
+/* story */
+/*  */
+
+.story-section{
+  position: relative !important;
+  padding-top: 150px !important;
+  padding-bottom: 30px !important;
+  background-image: var(--section-background-color) !important;
+  min-height: 700px;
+  max-height: 1500px;
+}
 
 
+.story-page{
+  height: 500px;
+  overflow: auto;
+}
+.story-gallery{
+  height: 500px;
+  overflow: auto;
+}
 
-
+/*  */
+/*  */
 .book-card {
   padding-top: 50px !important;
   padding-bottom: 50px !important;
