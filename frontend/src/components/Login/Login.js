@@ -24,8 +24,13 @@ function Login() {
                 },
             });
 
+            const data = response.data;
+            
+            window.location.href = "/";
             if (response.status === 200) {
                 alert("Login successful");
+                localStorage.setItem("uid", data.user.user_id)
+                window.location.href = "/";
             }
         } catch (error) {
             alert('Wrong user name or password');

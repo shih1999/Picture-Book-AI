@@ -36,6 +36,7 @@ function SignUp() {
 
             if (response.status === 201) {
                 alert(data.message);
+                window.location.href = "/login";
             }
         } catch (error) {
             alert('Error registering user');

@@ -25,10 +25,16 @@ function NavBar() {
       updateNavbar(false);
     }
   }
-  
+
+  // for testing
+  // localStorage.setItem("uid", 1);
+  // localStorage.setItem("uname", "Bob");
+
   let login = localStorage.getItem("access_token");
+  let user_id = localStorage.getItem("uid");
 
   const logout = () => {
+    localStorage.setItem("uid", "");
     var access_token = "";
     access_token = localStorage.getItem("access_token");
     axios.post('https://web-app-backend-r3ac.onrender.com/logout', null,{ headers: {Authorization : `Bearer ${access_token}`}})
@@ -98,7 +104,7 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            {login !== null && (
+            {user_id !== null && (
               <Nav.Item>
                 <Nav.Link
                   as={Link}
@@ -114,7 +120,7 @@ function NavBar() {
             )}
 
             <Nav.Item className="fork-btn">
-              {login === null ? <Button
+              {user_id === null ? <Button
                 href="/login"
                 className="fork-btn-inner"
                 variant="danger"
