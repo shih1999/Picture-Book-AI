@@ -5,7 +5,7 @@ import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
 import Story from "./components/Create/Story";
 // import Library from "./components/Library/Library";
-// import MyStory from "./components/MyStory/MyStory";
+import MyStory from "./components/MyStory/MyStory";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
 // import ThreeLittlePigs from "./components/Library/Mock_story/ThreeLittlePigs/ThreeLittlePigs";
@@ -46,9 +46,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ChooseStyle" element={<ChooseStyle />} />
-            {/* <Route path="/library" element={<Library />} /> */}
+            {/* {<Route path="/library" element={<Library />} />} */}
             {/* <Route path="/viewstory/:bookID" element={<ViewStory />} /> */}
-            {/* <Route path="/mystory" element={<MyStory />} /> */}
+            {<Route path="/mystory" element={<MyStory />} />}
             {<Route path="/login" element={<Login />} />}
             {<Route path="/signup" element={<SignUp />} />}
             <Route path="*" element={<Navigate to="/" />} />
