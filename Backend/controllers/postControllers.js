@@ -11,7 +11,7 @@ exports.createNewPost = async (req, res, next) => {
             story_category
         );
         post = await post.save();
-        res.status(201).json({ message: "Post created successfully", post });
+        res.status(201).json({ message: "Post created successfully", post_id: post });
     } catch (error) {
         res.status(500).json({ message: 'Error creating post', error });
     }
@@ -73,11 +73,12 @@ exports.getUserAllPost = async (req, res, next) => {
     }
 };
 
+
 exports.getAllPost = async (req, res, next) => {
     try {
-        
-        const way = req.params.method; 
-        const Posts = await Post.findAll(way);
+        const sortBy = req.body.sortBy; // Default to sorting by creation date
+
+        const Posts = await Post.findAllSorted(sortBy);
 
         if (Posts.length > 0) {
             res.status(200).json({ message: 'All posts retrieved successfully.', Posts });
@@ -85,15 +86,15 @@ exports.getAllPost = async (req, res, next) => {
             res.status(404).json({ message: 'No posts.' });
         }
     } catch (error) {
-        next(error); 
+        next(error);
     }
 };
 
-exports.getAllPost = async (req, res, next) => {
+exports.getPostByCategory = async (req, res, next) => {
     try {
-        
-        const category = req.params.story_category; 
-        const Posts = await Post.findAllCategory(category);
+        const category = req.body.category; // Default to sorting by creation date
+
+        const Posts = await Post.findAll(category);
 
         if (Posts.length > 0) {
             res.status(200).json({ message: 'All posts retrieved successfully.', Posts });
@@ -101,7 +102,7 @@ exports.getAllPost = async (req, res, next) => {
             res.status(404).json({ message: 'No posts.' });
         }
     } catch (error) {
-        next(error); 
+        next(error);
     }
 };
 
