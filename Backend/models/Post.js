@@ -72,16 +72,18 @@ class Post {
         return result.affectedRows; 
     }
 
-    static async findAll(orderBy){
-        let sql = `SELECT * FROM posts ORDER BY ${orderBy} DESC`;
-        const [rows] = await db.execute(sql);
-        return rows; 
-    }
-    static async findAllCategory(category){
-        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY likes_count DESC`;
+    static async findAll(category){
+        let sql = `SELECT * FROM posts WHERE story_category = ?`;
         const [rows] = await db.execute(sql,[category]);
         return rows; 
     }
+    static async findAllSorted(sortBy) {
+        
+        const sql = `SELECT * FROM posts ORDER BY ${sortBy} DESC`;
+        const [rows] = await db.execute(sql);
+        return rows;
+    }
+    
     
     static async deleteByPostId(post_id) {
         let sql = `DELETE FROM posts WHERE post_id = ?`;
