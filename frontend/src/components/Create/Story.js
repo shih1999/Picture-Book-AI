@@ -87,22 +87,22 @@ const ChildBookEditor = () => {
       layout: page.layout
     };
     console.log(payload);
-    // try {
-    //   const response = await axios.post('http://localhost:4000/contents/create',payload,
-    //   {
-    //       headers: {
-    //           'Content-Type': 'application/json',
-    //       },
-    //   });
+    try {
+      const response = await axios.post('http://localhost:4000/contents/create',payload,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
 
-    //   const data = response.data;
+      const data = response.data;
 
-    //   if (response.status === 201) {
-    //       alert(data.message);
-    //   }
-    // } catch (error) {
-    //     alert('Error registering user');
-    // };
+      if (response.status === 201) {
+          alert(data.message);
+      }
+    } catch (error) {
+        alert('Error registering user');
+    };
   };
 
   const handleSave = async () => {
@@ -112,29 +112,29 @@ const ChildBookEditor = () => {
       story_category: localStorage.getItem("style")
     };
 
-    // try {
-    //     const response = await axios.post('http://localhost:4000/posts/create',payload,
-    //     {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
+    try {
+        const response = await axios.post('http://localhost:4000/posts/create',payload,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
   
-    //     const data = response.data;
-    //     console.log(data);
-    //     if (response.status === 200) {
-    //       // alert("Login successful");
-    //       setPostID(data.post_id);
+        const data = response.data;
+        console.log(data);
+        if (response.status === 200) {
+          // alert("Login successful");
+          setPostID(data.post_id);
           
           
-    //     }
+        }
 
-    //     if (response.status === 201) {
-    //         alert(data.message);
-    //     }
-    //   } catch (error) {
-    //       alert('Error registering user');
-    //   };
+        if (response.status === 201) {
+            alert(data.message);
+        }
+      } catch (error) {
+          alert('Error registering user');
+      };
     console.log(payload);
 
     for (let i = 0; i < pages.length; i += 1){
