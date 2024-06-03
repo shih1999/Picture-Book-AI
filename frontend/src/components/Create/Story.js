@@ -12,7 +12,7 @@ const ChildBookEditor = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
-  const [postID, setPostID] = useState();
+  const [postID, setPostID] = useState(5);
 
 
   const goBackToHomePage = () =>{
@@ -69,7 +69,7 @@ const ChildBookEditor = () => {
     // } catch (error) {
     //   console.error("Error:", error);
     // }
-    setGallery([...gallery, "https://via.placeholder.com/512"]);
+    setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };
@@ -122,15 +122,18 @@ const ChildBookEditor = () => {
   
         const data = response.data;
         console.log(data);
-        if (response.status === 200) {
-          // alert("Login successful");
-          setPostID(data.post_id);
+        // if (response.status === 200) {
+        //   // alert("Login successful");
+        //   console.log(data.post_id)
           
-          
-        }
+
+        // }
 
         if (response.status === 201) {
+          
             alert(data.message);
+            console.log(data.post_id)
+            await setPostID(data.post_id);
         }
       } catch (error) {
           alert('Error registering user');
