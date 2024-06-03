@@ -1,12 +1,16 @@
-import React, { useState, useEffect} from 'react';
-import { Container, Row, Col, Card, Button, Image} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 
+import headPhoto from '../../assets/images/head_photo.png';
+
 function MyStory() {
     const [editingStories, setEditingStories] = useState([]);
+    const [editingCovers, setEditingCovers] = useState({});
     const [publishedStories, setPublishedStories] = useState([]);
+    const [publishedCovers, setPublishedCovers] = useState({});
     const user_id = localStorage.getItem("uid");
     const user_email = localStorage.getItem("uemail");
     const user_name = localStorage.getItem("uname");
@@ -15,23 +19,56 @@ function MyStory() {
     // const user_name = "Group4";
 
     useEffect(() => {
-        // editing stories
-        axios.get('http://localhost:4000/posts/${user_id}/0')
-        .then(response => {
+        // fetching editing stories
+        axios.get(`http://localhost:4000/posts/${user_id}/0`)
+        .then(async response => {
             setEditingStories(response.data.userPosts);
+            // editingIDs = response.data.userPosts.map(story => story.post_id);
+            const editingIDs = response.data.userPosts.map(story => story.post_id);
+            
+            // get cover images
+            const coverPromises = editingIDs.map(async editingID =>
+                axios.get(`http://localhost:4000/content/cover/${editingID}`).then(async res => ({
+                    id: editingID,
+                    coverUrl: res.data.postPage.image_url
+                }))
+            );
+            const coverResults = await Promise.all(coverPromises);
+            const coversMap = coverResults.reduce((acc, cover) => {
+                acc[cover.id] = cover.coverUrl;
+                return acc;
+            }, {});
+            setEditingCovers(coversMap); 
         })
         .catch(error => {
-            console.error('Error fetching editing stories:', error);
-        });
-        // published stories
-        axios.get('http://localhost:4000/posts/${user_id}/1')
-        .then(response => {
-            setPublishedStories(response.data.userPosts);
-        })
-        .catch(error => {
-            console.error('Error fetching published stories:', error);
+            console.error('Error fetching editing story covers:', error);
         });
         
+        // published stories
+        axios.get(`http://localhost:4000/posts/${user_id}/1`)
+        .then(async response => {
+            setPublishedStories(response.data.userPosts);
+            // publishedIDs = response.data.userPosts.map(story => story.post_id);
+            const publishedIDs = response.data.userPosts.map(story => story.post_id);
+            
+            // get cover images
+            const coverPromises = publishedIDs.map(async publishedID =>
+                axios.get(`http://localhost:4000/content/cover/${publishedID}`).then(async res => ({
+                    id: publishedID,
+                    coverUrl: res.data.postPage.image_url
+                }))
+            );
+            const coverResults = await Promise.all(coverPromises);
+            const coversMap = coverResults.reduce((acc, cover) => {
+                acc[cover.id] = cover.coverUrl;
+                return acc;
+            }, {});
+            setPublishedCovers(coversMap); 
+        })
+        .catch(error => {
+            console.error('Error fetching published story covers:', error);
+        });
+       
         // for frontend testing
         // setEditingStories([
         //     { "post_id": 4, "user_id": 1, "title": "wedfdday", "created_at": "2024-06-01T23:35:28.000Z", "likes_count": 0, "comments_count": 0, "story_category": "romatic", "published": { "type": "Buffer", "data": [ 0 ] } },
@@ -53,7 +90,7 @@ function MyStory() {
                 <Row>
                     <Col>
                         <Image className="head-photo"
-                            src={require('../../assets/images/head_photo.png')}
+                            src={headPhoto} alt="head photo"
                         />
                     </Col>
                     <Col className="info-text">
@@ -81,7 +118,7 @@ function MyStory() {
                             <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
                                 <Link className="book-link" to={`/viewstory/${story.id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={require('./test/cat.png')} />
+                                    <Card.Img variant="top" src={editingCovers[story.id]} />
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
@@ -107,7 +144,7 @@ function MyStory() {
                             <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
                                 <Link className="book-link" to={`/viewstory/${story.id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={require('./test/cat.png')} />
+                                    <Card.Img variant="top" src={publishedCovers[story.id]} />
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
