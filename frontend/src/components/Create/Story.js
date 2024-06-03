@@ -15,10 +15,6 @@ const ChildBookEditor = () => {
   const [postID, setPostID] = useState(5);
 
 
-  const setPostId = async (id) => {
-    setPostID(id);
-  }
-
   const goBackToHomePage = async () =>{
     window.location.href = "/";
   };
@@ -136,7 +132,8 @@ const ChildBookEditor = () => {
         if (response.status === 201) {
           
             alert(data.message);
-            await setPostId(data.post_id);
+            setPostID(()=>data.post_id);
+            
         }
       } catch (error) {
           alert('Error registering user');
