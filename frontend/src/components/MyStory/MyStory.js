@@ -21,25 +21,30 @@ function MyStory() {
     useEffect(() => {
         // fetching editing stories
         axios.get(`http://localhost:4000/posts/${user_id}/0`)
-        .then(async response => {
-            setEditingStories(response.data.userPosts);
-            // editingIDs = response.data.userPosts.map(story => story.post_id);
-            const editingIDs = response.data.userPosts.map(story => story.post_id);
-            
-            // get cover images
-            const coverPromises = editingIDs.map(async editingID =>
-                axios.get(`http://localhost:4000/content/cover/${editingID}`).then(async res => ({
-                    id: editingID,
-                    coverUrl: res.data.postPage.image_url
-                }))
-            );
-            const coverResults = await Promise.all(coverPromises);
-            const coversMap = coverResults.reduce((acc, cover) => {
-                acc[cover.id] = cover.coverUrl;
-                return acc;
-            }, {});
-            setEditingCovers(coversMap); 
-        })
+            .then(async response => {
+                setEditingStories(response.data.userPosts);
+                // editingIDs = response.data.userPosts.map(story => story.post_id);
+                const editingIDs = response.data.userPosts.map(story => story.post_id);
+                
+                // get cover images
+                const coverPromises = editingIDs.map(async editingID =>
+                    axios.get(`http://localhost:4000/contents/cover/${editingID}`)
+                        .then(async res => ({
+                            id: editingID,
+                            coverUrl: res.data.postPage.image_url
+                    }))
+                );
+                const coverResults = await Promise.allSettled(coverPromises);
+                const coversMap = coverResults.reduce((acc, cover) => {
+                    if (cover.status === 'fulfilled') {
+                        acc[cover.value.id] = cover.value.coverUrl;
+                      } else {
+                        console.error(`Failed to fetch cover for ID:`, cover.reason.message);
+                      }
+                    return acc;
+                }, {});
+                setEditingCovers(coversMap); 
+            })
         .catch(error => {
             console.error('Error fetching editing story covers:', error);
         });
@@ -53,14 +58,19 @@ function MyStory() {
             
             // get cover images
             const coverPromises = publishedIDs.map(async publishedID =>
-                axios.get(`http://localhost:4000/content/cover/${publishedID}`).then(async res => ({
-                    id: publishedID,
-                    coverUrl: res.data.postPage.image_url
+                axios.get(`http://localhost:4000/contents/cover/${publishedID}`)
+                    .then(async res => ({
+                        id: publishedID,
+                        coverUrl: res.data.postPage.image_url
                 }))
             );
-            const coverResults = await Promise.all(coverPromises);
+            const coverResults = await Promise.allSettled(coverPromises);
             const coversMap = coverResults.reduce((acc, cover) => {
-                acc[cover.id] = cover.coverUrl;
+                if (cover.status === 'fulfilled') {
+                    acc[cover.value.id] = cover.value.coverUrl;
+                  } else {
+                    console.error(`Failed to fetch cover for ID:`, cover.reason.message);
+                  }
                 return acc;
             }, {});
             setPublishedCovers(coversMap); 
@@ -118,7 +128,7 @@ function MyStory() {
                             <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
                                 <Link className="book-link" to={`/viewstory/${story.id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={editingCovers[story.id]} />
+                                    <Card.Img variant="top" src={'https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg'} />
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
@@ -144,7 +154,7 @@ function MyStory() {
                             <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
                                 <Link className="book-link" to={`/viewstory/${story.id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={publishedCovers[story.id]} />
+                                    <Card.Img variant="top" src={publishedCovers[story.id]}/>
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
