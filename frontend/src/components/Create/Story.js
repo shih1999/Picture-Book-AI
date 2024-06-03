@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
@@ -14,6 +14,9 @@ const ChildBookEditor = () => {
   const [title, setTitle] = useState("");
   const [postID, setPostID] = useState(5);
 
+  useEffect(() => {
+    console.log(postID) 
+  },[postID])
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
