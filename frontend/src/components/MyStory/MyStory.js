@@ -128,7 +128,7 @@ function MyStory() {
                             <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
                                 <Link className="book-link" to={`/viewstory/${story.id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={'https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg'} />
+                                    <Card.Img variant="top" src={editingCovers[story.id]} />
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
