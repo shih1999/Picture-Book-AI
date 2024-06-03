@@ -27,7 +27,7 @@ CREATE TABLE `Story`.`contents`(
  `page_number` INT NOT NULL,
  `image_url` VARCHAR(50),
  `content` VARCHAR(50),
- `layout` INT NOT NULL,
+ `layout` VARCHAR(50) NOT NULL,
  PRIMARY KEY(`page_id`),
  CONSTRAINT `content_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE);
  

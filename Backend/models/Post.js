@@ -31,7 +31,9 @@ class Post {
         )
         `;
         
-        return db.execute(sql);
+        const [result] = await db.execute(sql);
+        const post_id = result.insertId;
+        return post_id;
     }
 
     static async findByPostId(post_id) {
