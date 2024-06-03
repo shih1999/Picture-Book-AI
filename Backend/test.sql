@@ -25,7 +25,7 @@ CREATE TABLE `Story`.`contents`(
  `page_id` INT NOT NULL AUTO_INCREMENT,
  `post_id` INT NOT NULL,
  `page_number` INT NOT NULL,
- `image_url` VARCHAR(50),
+ `image_url` VARCHAR(150),
  `content` VARCHAR(50),
  `layout` VARCHAR(50) NOT NULL,
  PRIMARY KEY(`page_id`),
