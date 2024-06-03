@@ -111,7 +111,7 @@ function MyStory() {
                 <div></div>
             </Container>
             <Container className="works">
-                <h1 className="title">In Progress 🕮</h1>
+                <h1 className="title">In Progress 📜</h1>
                 <Row>
                     {editingStories.length > 0 ? (
                         editingStories.map((story) => (
@@ -137,7 +137,7 @@ function MyStory() {
                 </Row>
             </Container>
             <Container className="works">
-                <h1 className="title">Published 🕮</h1>
+                <h1 className="title">Published 📖</h1>
                 <Row>
                     {publishedStories.length > 0 ? (
                         publishedStories.map((story) => (
