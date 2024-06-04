@@ -109,7 +109,7 @@ exports.sortCategory = async (req, res, next) => {
         if (posts.length > 0) {
             res.status(200).json({ message: 'Posts sorted successfully。', posts });
         } else {
-            res.status(404).json({ message: 'xxx' });
+            res.status(404).json({ message: 'No such posts Category' });
         }
     } catch (error) {
         next(error);
