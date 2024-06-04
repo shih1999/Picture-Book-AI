@@ -77,9 +77,9 @@ class Post {
         const [rows] = await db.execute(sql,[category]);
         return rows; 
     }
-    static async findAllSorted(sortBy) {
+    static async findAllSorted() {
         
-        const sql = `SELECT * FROM posts ORDER BY ${sortBy} DESC`;
+        const sql = `SELECT * FROM posts ORDER BY created_at DESC`;
         const [rows] = await db.execute(sql);
         return rows;
     }
