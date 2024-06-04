@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
-import { useParams } from "react-router-dom";
-// import { text } from 'body-parser';
+// import { useParams } from "react-router-dom";
 
 
 const EditStory = () => {
-  const {postID} = useParams();
+  // const {postId} = useParams();
+  const postId = 1;
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
@@ -16,9 +16,9 @@ const EditStory = () => {
   // const [title, setTitle] = useState("");
   // const [postID, setPostID] = useState(5);
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const response = await axios.get('localhost:4000/contents/'+postID,
+      const response = axios.get('localhost:4000/contents/'+postId,
       {
           headers: {
               'Content-Type': 'application/json',
@@ -36,9 +36,9 @@ const EditStory = () => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(postID) 
-  },[postID])
+  // useEffect(() => {
+  //   console.log(postID) 
+  // },[postID])
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
