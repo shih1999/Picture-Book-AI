@@ -48,12 +48,12 @@ function MyModal() {
 
     useEffect(() => {
         // get story info
-        axios.get(`localhost:4000/posts/${postId}`)
+        axios.get(`http://localhost:4000/posts/${postId}`)
             .then(response => {
                 setStory(response.data.userPosts);
                 const author_id = response.data.userPosts[0]?.user_id;
                 // get author info
-                axios.get(`localhost:4000/users/${author_id}`)
+                axios.get(`http://localhost:4000/users/${author_id}`)
                     .then(response => {
                         setAuthor(response.data.user);
                         handleAuthorTrue();
