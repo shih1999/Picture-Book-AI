@@ -18,7 +18,10 @@ router
 router
     .route('/modify/:post_id')
     .put(postControllers.modifyPost);
-
+router
+    .route('/:post_id')
+    .get(postControllers.getByPostID);
+    
 router
     .route('/:user_id/:p')
     .get(postControllers.getUserAllPost);

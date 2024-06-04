@@ -84,7 +84,12 @@ class Post {
         return rows;
     }
     
-    
+    static async getByPostId(post_id) {
+        let sql = `SELECT * FROM posts WHERE post_id = ?`;
+        const [result] = await db.execute(sql, [post_id]);
+        return result; 
+    }
+
     static async deleteByPostId(post_id) {
         let sql = `DELETE FROM posts WHERE post_id = ?`;
         const [result] = await db.execute(sql, [post_id]);

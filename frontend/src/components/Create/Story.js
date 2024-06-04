@@ -72,7 +72,7 @@ const ChildBookEditor = () => {
     // } catch (error) {
     //   console.error("Error:", error);
     // }
-    setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
+    setGallery([...gallery, "https://as.chdev.tw/web/article/a/d/4/acb39e71-d6d7-431b-b884-1891db9557611619606801.jpg"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };

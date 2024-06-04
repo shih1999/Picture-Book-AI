@@ -56,7 +56,20 @@ exports.likePost = async (req, res, next) => {
         next(error); 
     }
 };
-
+exports.getByPostID = async (req, res, next) => {
+    try {
+        const postId = req.params.post_id; 
+        const userPosts = await Post.getByPostId(postId);
+        
+        if (userPosts.length > 0) {
+            res.status(200).json({ message: 'User posts retrieved successfully.', userPosts });
+        } else {
+            res.status(404).json({ message: 'No posts found for this user.' });
+        }
+    } catch (error) {
+        next(error); 
+    }
+};
 exports.getUserAllPost = async (req, res, next) => {
     try {
         const userId = req.params.user_id; 
