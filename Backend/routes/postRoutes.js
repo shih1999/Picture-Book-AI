@@ -32,11 +32,11 @@ router
 
 router
     .route('/')
-    .get(postControllers.getAllPostsSortedByCreatedAt);
+    .get(postControllers.sortCategory);
 
-router
-    .route('/A')
-    .get(postControllers.getcartoon);
+// router
+//     .route('/A')
+//     .get(postControllers.getcartoon);
 
 
 //要加上publish 變動

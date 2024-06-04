@@ -83,10 +83,10 @@ class Post {
         const [rows] = await db.execute(sql);
         return rows;
     }
-    static async findcartoon() {
+    static async findcartoon(sortedBy) {
         
-        const sql = `SELECT * FROM posts WHERE story_category = 'cartoon'`;
-        const [rows] = await db.execute(sql);
+        let sql = `SELECT * FROM posts WHERE story_category = ?`;
+        const [rows] = await db.execute(sql,[sortedBy]);
         return rows;
     }
     

@@ -101,9 +101,10 @@ exports.getAllPostsSortedByCreatedAt = async (req, res, next) => {
     }
 };
 
-exports.getcartoon = async (req, res, next) => {
+exports.sortCategory = async (req, res, next) => {
     try {
-        const posts = await Post.findcartoon();
+        const catgory = req.body.sortedBy;
+        const posts = await Post.findcartoon(catgory);
 
         if (posts.length > 0) {
             res.status(200).json({ message: 'Posts sorted successfully。', posts });

@@ -16,6 +16,7 @@ const EditStory = () => {
   // const [title, setTitle] = useState("");
   // const [postId, setpostId] = useState(5);
 
+<<<<<<< Updated upstream
 
   useEffect(() => {
     
@@ -38,6 +39,32 @@ const EditStory = () => {
   }, []);
 
 
+=======
+  useEffect(() => {
+    try {
+      const response = axios.get('http://localhost:4000/contents/'+postId,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const data = response.data;
+      console.log(response);
+
+      if (response.status === 200) {
+          alert(data.message);
+          setPages(data.postPages)
+      }
+    } catch (error) {
+        alert('Error registering user');
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(postID) 
+  // },[postID])
+>>>>>>> Stashed changes
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
