@@ -6,48 +6,65 @@ import axios from 'axios';
 
 
 const EditStory = () => {
-  const [pages, setPages] = useState([{ id: 1, image: null, text: '' , layout:"image-right"}]);
+  const {postID} = useParams();
+  const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
-  const [title, setTitle] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [postID, setPostID] = useState(5);
 
-  useEffect(() => {
-    axios
-      .get("https://web-app-backend-r3ac.onrender.com/book")
-      .then((res) => {
-        setBooks(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
+  useEffect(async () => {
+    try {
+      const response = await axios.get('localhost:4000/contents/'+postID,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
       });
+
+      const data = response.data;
+
+      if (response.status === 201) {
+          alert(data.message);
+          setPages(data.postPages)
+      }
+    } catch (error) {
+        alert('Error registering user');
+    }
   }, []);
 
+  useEffect(() => {
+    console.log(postID) 
+  },[postID])
 
-  const handleAddPage = () => {
-    const newPage = { id: pages.length + 1, image: null, text: '', layout:"image-right"};
-    setPages([...pages, newPage]);
-    setCurrentPage(newPage.id);
+  const goBackToHomePage = async () =>{
+    window.location.href = "/";
   };
 
-  const handleDeletePage = () => {
-    const updatedPages = pages.filter((page) => page.id !== currentPage);
-    setPages(updatedPages);
-    setCurrentPage(updatedPages.length > 0 ? updatedPages[0].id : null);
-  };
+  // const handleAddPage = () => {
+  //   const newPage = { page_id: pages.length + 1, post_id: postID, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
+  //   setPages([...pages, newPage]);
+  //   setCurrentPage(newPage.id);
+  // };
+
+  // const handleDeletePage = () => {
+  //   const updatedPages = pages.filter((page) => page.id !== currentPage);
+  //   setPages(updatedPages);
+  //   setCurrentPage(updatedPages.length > 0 ? updatedPages[0].id : null);
+  // };
 
   const handleImageChange = (image) => {
     const updatedPages = pages.map((page) =>
-      page.id === currentPage ? { ...page, image } : page
+      page.id === currentPage ? { ...page, image_url : image } : page
     );
     setPages(updatedPages);
   };
 
   const handleTextChange = (text) => {
     const updatedPages = pages.map((page) =>
-      page.id === currentPage ? { ...page, text } : page
+      page.id === currentPage ? { ...page, content : text } : page
     );
     setPages(updatedPages);
   };
@@ -76,7 +93,7 @@ const EditStory = () => {
     // } catch (error) {
     //   console.error("Error:", error);
     // }
-    setGallery([...gallery, "https://via.placeholder.com/512"]);
+    setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };
@@ -85,37 +102,38 @@ const EditStory = () => {
     handleImageChange(image);
   };
 
-  const SaveEveryPages = async (page) =>{
+  const EditEveryPages = async (page) =>{
     let payload = {
-      page_number: page.id,
-      image_url: page.image,
-      content: page.text,
-      layout: page.layout
+      article: page.content,
+      image_url: page.image_url
     };
-    console.log(payload)
-    // try {
-    //   const response = await axios.post('http://localhost:4000/contents/create',payload,
-    //   {
-    //       headers: {
-    //           'Content-Type': 'application/json',
-    //       },
-    //   });
+    console.log(payload);
+    try {
+      const response = await axios.put('localhost:4000/contents/modify/'+page.page_id ,payload,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
 
-    //   const data = response.data;
+      const data = response.data;
 
-    //   if (response.status === 201) {
-    //       alert(data.message);
-    //   }
-    // } catch (error) {
-    //     alert('Error registering user');
-    // }
-  }
+      if (response.status === 201) {
+          alert(data.message);
+      }
+    } catch (error) {
+        alert('Error registering user');
+    };
+  };
 
-  const handleSave = async () => {
+  const handleEdit = async () => {
+    
     for (let i = 0; i < pages.length; i += 1){
       // await console.log(pages[i])
-      await SaveEveryPages(pages[i]);
+      await EditEveryPages(pages[i]);
     };
+    
+    await goBackToHomePage();
 
 
     
@@ -124,17 +142,9 @@ const EditStory = () => {
   return (
     <Container fluid className="story-section">
       <Row>
-        <Col md = {{ span: 4 , offset: 3 }}>
-          <Form.Control  
-            type="text" 
-            placeholder="Write Your Title" 
-            onChange = {(e) => setTitle(e.target.value)}
-            value = {title}
-          />
-        </Col>
         <Col>
-          <Button variant="primary" onClick={handleSave}>
-            Save Story
+          <Button variant="primary" onClick={handleEdit} >
+            Edit Story
           </Button>
         </Col>
       </Row>
@@ -143,38 +153,38 @@ const EditStory = () => {
           <h4>Pages</h4>
           {pages.map((page) => (
             <div
-              key={page.id}
-              onClick={() => setCurrentPage(page.id)}
+              key={page.page_id}
+              onClick={() => setCurrentPage(page.page_id)}
               style={{ cursor: 'pointer' }}
             >
-              <Image width={150}height={150} src={page.image} thumbnail />
+              <Image width={150}height={150} src={page.image_url} thumbnail />
             </div>
           ))}
           
         </Col>
         <Col md={7}>
           <h4>Editor</h4>
-          <div className={`d-flex ${pages.find((page) => page.id === currentPage)?.layout}`}>
-            {pages.find((page) => page.id === currentPage)?.layout.includes('image-left') && (
-              <Image src={pages.find((page) => page.id === currentPage)?.image} fluid />
+          <div className={`d-flex ${pages.find((page) => page.page_id === currentPage)?.layout}`}>
+            {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-left') && (
+              <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
             )}
             <div className="flex-grow-1">
-              {pages.find((page) => page.id === currentPage)?.layout.includes('image-top') && (
-                <Image src={pages.find((page) => page.id === currentPage)?.image} fluid />
+              {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-top') && (
+                <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
               )}
               <Form.Control
                 className='w-100 h-100'
                 id='page-text'
                 as="textarea"
-                value={pages.find((page) => page.id === currentPage)?.text}
+                value={pages.find((page) => page.page_id === currentPage)?.content}
                 onChange={(e) => handleTextChange(e.target.value)}
               />
-              {pages.find((page) => page.id === currentPage)?.layout.includes('image-bottom') && (
-                <Image src={pages.find((page) => page.id === currentPage)?.image} fluid />
+              {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-bottom') && (
+                <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
               )}
             </div>
-            {pages.find((page) => page.id === currentPage)?.layout.includes('image-right') && (
-              <Image src={pages.find((page) => page.id === currentPage)?.image} fluid />
+            {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-right') && (
+              <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
             )}
           </div>
           <div className="d-flex justify-content-around mt-3">
@@ -222,7 +232,7 @@ const EditStory = () => {
           ))}
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Col>
           <Button className='mt-2' variant="primary" onClick={handleAddPage}>
             Add Page
@@ -231,9 +241,9 @@ const EditStory = () => {
             Delete Page
           </Button>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 };
 
-export default ChildBookEditor;
+export default EditStory;

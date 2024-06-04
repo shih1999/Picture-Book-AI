@@ -12,7 +12,7 @@ const ChildBookEditor = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
-  const [postID, setPostID] = useState(5);
+  // const [postID, setPostID] = useState(5);
 
   useEffect(() => {
     console.log(postID) 
