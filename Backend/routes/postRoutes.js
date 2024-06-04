@@ -31,12 +31,8 @@ router
     .put(postControllers.changePublish);
 
 router
-    .route('/all')
-    .get(postControllers.getAllPost);
-
-router
-    .route('/category')
-    .get(postControllers.getPostByCategory);
+    .route('/')
+    .get(postControllers.getAllPostsSortedByCreatedAt);
 
 //要加上publish 變動
 // router.route("/:id").get(userControllers.getPostById);

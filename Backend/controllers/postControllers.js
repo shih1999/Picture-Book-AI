@@ -87,32 +87,14 @@ exports.getUserAllPost = async (req, res, next) => {
 };
 
 
-exports.getAllPost = async (req, res, next) => {
+exports.getAllPostsSortedByCreatedAt = async (req, res, next) => {
     try {
-        const sortBy = req.body.sortBy; // Default to sorting by creation date
+        const posts = await Post.findAllSorted();
 
-        const Posts = await Post.findAllSorted(sortBy);
-
-        if (Posts.length > 0) {
-            res.status(200).json({ message: 'All posts retrieved successfully.', Posts });
+        if (posts.length > 0) {
+            res.status(200).json({ message: '所有帖子按创建日期排序成功。', posts });
         } else {
-            res.status(404).json({ message: 'No posts.' });
-        }
-    } catch (error) {
-        next(error);
-    }
-};
-
-exports.getPostByCategory = async (req, res, next) => {
-    try {
-        const category = req.body.category; // Default to sorting by creation date
-
-        const Posts = await Post.findAll(category);
-
-        if (Posts.length > 0) {
-            res.status(200).json({ message: 'All posts retrieved successfully.', Posts });
-        } else {
-            res.status(404).json({ message: 'No posts.' });
+            res.status(404).json({ message: '没有帖子。' });
         }
     } catch (error) {
         next(error);
