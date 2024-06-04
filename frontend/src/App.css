@@ -1104,14 +1104,14 @@ button:focus {
 .library-container .library-title {
   font-size: 50px;
   text-align: center; 
-  color:#f64b4b;
+  color:#FD5E5E;
   font-weight: bold;
   margin-bottom: 40px;
 }
 
 .library-container .library-icon {
   font-size: 36px;
-  color:#f64b4b;
+  color:#FD5E5E;
 }
 
 .library-container .category-select {
@@ -1157,14 +1157,16 @@ button:focus {
 
 .library-container .sort-options .sort-btn {
   color: #ffffff !important;
-  background-color: #ffa1a1 !important;
+  /* background-color: #ffa1a1 !important; */
+  background-color: #FD5E5E !important;
   border-width: 0px;
-  box-shadow: 2px 2px 8px #fd5e5ec0;
+  /* box-shadow: 2px 2px 8px #fd5e5ec0; */
+  box-shadow: 2px 2px 8px #DC3545
 }
 
 .library-container .sort-options .sort-btn:hover {
   color: #ffffff !important;
-  background-color: #FD5E5E !important;
+  background-color: #DC3545 !important;
 }
 
 .library-container .book {
