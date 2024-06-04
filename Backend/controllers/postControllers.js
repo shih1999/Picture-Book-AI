@@ -132,6 +132,15 @@ exports.sorted = async (req, res, next) => {
                 }
             } 
         }
+        else{
+            const posts = await Post.findAll();
+
+                if (posts.length > 0) {
+                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
+                } else {
+                    res.status(404).json({ message: 'No such posts Category' });
+                } 
+        }
         if (posts.length > 0) {
             res.status(200).json({ message: 'Posts sorted successfully。', posts });
         } else {

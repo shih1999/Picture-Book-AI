@@ -71,7 +71,11 @@ class Post {
         const [result] = await db.execute(sql, [comments_count, post_id]);
         return result.affectedRows; 
     }
-
+    static async findAll() {
+        const sql = `SELECT * FROM posts ORDER BY created_at DESC`;
+        const [rows] = await db.execute(sql);
+        return rows;
+    }
     static async findAllSorted(sortway,descorasc) {
         const sql = `SELECT * FROM posts ORDER BY ${sortway} ${descorasc}`;
         const [rows] = await db.execute(sql);
