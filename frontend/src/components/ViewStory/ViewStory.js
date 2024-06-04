@@ -113,12 +113,11 @@ function MyModal() {
                                 <Col className="category" xs={4}><Badge><FaBookmark /> {storyInfo[0]?.story_category}</Badge></Col>
                             </Row>
                         </Container>
-                        {/* <p className="story-date">created on {storyInfo[0]?.created_at.slice(0, 10)}</p> */}
-                        <Container className="story-description">
+                        {/* <Container className="story-description">
                             <h2 className="description-title">Description</h2>
                             <hr className="custom-hr"/>
                             <div>{storyCover[0]?.content}</div>
-                        </Container>
+                        </Container> */}
                         <div className="story-date"><FaRegStickyNote /> created on {storyInfo[0]?.created_at.slice(0, 10)}</div>
                         {/* <div className="comments-section">
                             <h5>Comments</h5>
