@@ -26,7 +26,7 @@ const EditStory = () => {
     }).then((res) => {
       console.log(res);
       console.log(res.data);
-      alert(res.data.message);
+      // alert(res.data.message);
       setPages(res.data.postPages);
 
     })
@@ -115,11 +115,11 @@ const EditStory = () => {
           },
       });
 
-      const data = response.data;
+      // const data = response.data;
 
-      if (response.status === 200) {
-          alert(data.message);
-      }
+      // if (response.status === 200) {
+      //     alert(data.message);
+      // }
     } catch (error) {
         alert('Error registering user');
     };
