@@ -73,16 +73,16 @@ function MyModal() {
             });
 
         // for frontend testing
-        setStory([
-            { "post_id": 3, "user_id": 1, "title": "Test Book", "created_at": "2024-06-04T00:45:23.000Z", "likes_count": 0, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] }}
-        ]);
-        setAuthor([
-            { "user_id": 1, "email_address": "happy@gmail.com", "user_name": "R12528025", "user_password": "uuu" }
-        ]);
-        setCover([
-            { "page_id": 3, "post_id": 2, "page_number": 3, "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg", "content": "big fdswolf", "layout": "up" }
-        ]);
-        localStorage.setItem("uid", 2);
+        // setStory([
+        //     { "post_id": 3, "user_id": 1, "title": "Test Book", "created_at": "2024-06-04T00:45:23.000Z", "likes_count": 0, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] }}
+        // ]);
+        // setAuthor([
+        //     { "user_id": 1, "email_address": "happy@gmail.com", "user_name": "R12528025", "user_password": "uuu" }
+        // ]);
+        // setCover([
+        //     { "page_id": 3, "post_id": 2, "page_number": 3, "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg", "content": "big fdswolf", "layout": "up" }
+        // ]);
+        // localStorage.setItem("uid", 2);
     }, [postId]);
     
     useEffect(() => {
