@@ -98,7 +98,11 @@ class Post {
         const [result] = await db.execute(sql, [post_id]);
         return result; 
     }
-
+    static async findUserIdByPostId(post_id) {
+        let sql = `SELECT user_id FROM posts WHERE post_id = ?`;
+        const [rows] = await db.execute(sql, [post_id]);
+        return rows.length > 0 ? rows[0].user_id : null;
+    }
     static async deleteByPostId(post_id) {
         let sql = `DELETE FROM posts WHERE post_id = ?`;
         const [result] = await db.execute(sql, [post_id]);

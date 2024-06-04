@@ -151,7 +151,20 @@ exports.sorted = async (req, res, next) => {
     }
 };
 
+exports.getUserIdByPostId = async (req, res, next) => {
+    try {
+        const postId = req.params.post_id;
+        const userId = await Post.findUserIdByPostId(postId);
 
+        if (userId) {
+            res.status(200).json({ user_id: userId });
+        } else {
+            res.status(404).json({ message: 'Post not found.' });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
 exports.modifyPost = async (req, res, next) => {
     try {
         const postId = req.params.post_id; 

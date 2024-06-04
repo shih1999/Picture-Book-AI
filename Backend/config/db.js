@@ -8,13 +8,6 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT
 });
-// let sql = "SELECT * FROM posts;";
-// pool.execute(sql, function (err, result) {
-//     if (err) throw err;
-//     // console.log(result);
-//     result.forEach(res=>{
-//         console.log(res.title);
-//     });
-// });
+
 
 module.exports = pool.promise();
