@@ -8,12 +8,6 @@ class User {
     }
     async save(){
 
-        // let d = new Date();
-        // let yyyy = d.getFullYear();
-        // let mm = d.getMonth() + 1;
-        // let dd = d.getDate();
-        // let createdAtDate = `${yyyy}-${mm}-${dd}`;
-
         let sql = `
         INSERT INTO users(
             email_address,

@@ -9,8 +9,8 @@ class Post {
     async save() {
         let d = new Date();
         let yyyy = d.getFullYear();
-        let mm = ('0' + (d.getMonth() + 1)).slice(-2); // 月份补零
-        let dd = ('0' + d.getDate()).slice(-2); // 日期补零
+        let mm = ('0' + (d.getMonth() + 1)).slice(-2); 
+        let dd = ('0' + d.getDate()).slice(-2);
         let hh = ('0' + d.getHours()).slice(-2);
         let min = ('0' + d.getMinutes()).slice(-2);
         let ss = ('0' + d.getSeconds()).slice(-2);
@@ -114,10 +114,6 @@ class Post {
         return result.affectedRows; 
     }
     
-    // static deleteByPostId(post_id) {
-    //     let sql = `DELETE FROM posts WHERE post_id = ?`;
-    //     return db.execute(sql, [post_id]);
-    // }
 }
 
 module.exports = Post;
