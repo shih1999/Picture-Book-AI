@@ -151,7 +151,7 @@ const ReadStory = () => {
           
         </Col>
         <Col md={7}>
-          <h4>Editor</h4>
+          
           <div className={`d-flex ${pages.find((page) => page.page_id === currentPage)?.layout}`}>
             {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-left') && (
               <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
@@ -160,7 +160,7 @@ const ReadStory = () => {
               {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-top') && (
                 <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
               )}
-              <p className='w-100 h-100 text-center' id='page-text'>
+              <p className='w-100 h-100 text-center text-monospace p-1 lh-lg' id='page-text'>
                 {pages.find((page) => page.page_id === currentPage)?.content}
               </p>
               {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-bottom') && (
