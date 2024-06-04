@@ -1055,7 +1055,7 @@ button:focus {
 
 .mystory-container .works .title {
   margin-bottom: 20px;
-  color:#f76363
+  color:#f76363;
 }
 
 .mystory-container .book {
@@ -1224,6 +1224,11 @@ button:focus {
   padding-bottom: 10px !important;
 }
 
+.library-container .book .card-img-top .img{
+  padding-top: 15px !important;
+  padding-bottom: 10px !important;
+}
+
 .library-container .book .story-title {
   font-size: 26px;
   font-weight: bold;
@@ -1285,8 +1290,53 @@ button:focus {
   background-color: white;
 }
 
-.viewstory-modal .close-btn {
+.viewstory-modal .button .btn-close {
   color: #f64b4b !important;
+}
+
+.viewstory-modal .sign-content {
+  margin: auto;
+  text-align: center;
+}
+
+.story-content .story-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #f64b4b;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  padding-top: 10px;
+}
+
+.image-container .story-image {
+  border-radius: 8px;
+  max-width: 100%;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.story-content .story-status {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  content: center;
+  font-size: 20px;
+  color: #ffa1a1;
+}
+
+.story-content .story-status .category{
+  font-size: 22px;
+  text-align: right;
+}
+
+.story-content .badge {
+  background-color: #ffa1a1 !important;
+  box-shadow: 2px 2px 5px #fd5e5ec0;
 }
 
 .viewstory-modal .viewstory-arthor {
@@ -1294,24 +1344,54 @@ button:focus {
   font-size: 24px;
 }
 
+.viewstory-modal .custom-hr {
+  border-top: 3px solid #f64b4b;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.viewstory-modal .story-description {
+  font-size: 18px;
+  text-align: left;
+}
+
+.story-description .description-title {
+  font-size: 24px;
+  color: #f64b4b;
+  margin-bottom: 0px;
+}
+
+.viewstory-modal .story-date {
+  color:  #ffa1a1;
+  font-size: 16px;
+  text-align: right;
+  padding-top: 20px;
+}
+
 .viewstory-modal .viewstory-icon {
   color: #f5aaaa !important;
   font-size: 40px;
 }
 
+.viewstory-modal .buttons {
+  display: flex;
+  justify-content: center;
+}
 
 .viewstory-modal .view-btn {
-  width: 100px;
+  min-width: 100px;
   color: white !important;
   background-color: #f64b4b !important;
   border-width: 0px;
+  margin: 10px;
 }
 
 .viewstory-modal .edit-btn {
-  width: 100px;
+  min-width: 100px;
   color: white !important;
   background-color: #f64b4b !important;
   border-width: 0px;
+  margin: 10px;
 }
 
 .viewstory-modal .edit-btn:hover {

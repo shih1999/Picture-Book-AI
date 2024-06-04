@@ -159,7 +159,7 @@ function Library() {
                                 {allStories.length > 0 ? (
                                     allStories.map((story) => (
                                         <Col key={story.post_id} xs={12} sm={6} md={6} lg={4}>
-                                            <Link className="book-link" to={`/viewstory/${story.id}`} onClick={() => handleLinkClick()}>
+                                            <Link className="book-link" to={`/viewstory/${story.post_id}`} onClick={() => handleLinkClick()}>
                                             <Card className="book">
                                                 {/* <Card.Img variant="top" src={story.image} /> */}
                                                 <Card.Text className="story-category"><Badge><FaBookmark /> {story.story_category}</Badge></Card.Text>

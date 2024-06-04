@@ -1,11 +1,11 @@
 import React, { useState, useEffect} from 'react';
-import { Container, Nav, Row, Col,  Modal, Card, Button, Image, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Container, Nav, Row, Col,  Modal, Badge, Button, Image, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { useParams, NavLink} from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 
 import { IoPersonCircleOutline } from "react-icons/io5";
-import { FaHeart, FaComment, FaEye } from "react-icons/fa";
+import { FaHeart, FaComment, FaEye, FaBookmark, FaRegStickyNote } from "react-icons/fa";
 import { FaShareAlt } from "react-icons/fa";
 
 function MyModal() {
@@ -103,23 +103,23 @@ function MyModal() {
                     </Col>
                     <Col xs={8} className="story-content">
                         <h1 className="story-title">{storyInfo[0]?.title}</h1>
-                        <Image src={storyCover[0]?.image_url} fluid className="story-image" />
-                        <div className="story-stats">
+                        <Container className="image-container"><Image src={storyCover[0]?.image_url} fluid className="story-image" /></Container>
+                        <Container  className="story-status">
                             <Row>
                                 <Col className="likes" xs={2}><FaHeart /> {storyInfo[0]?.likes_count}</Col>   
                                 <Col className="comments" xs={2}><FaComment /> {storyInfo[0]?.comments_count}</Col>
-                                <Col className="views" xs={2}><FaEye /></Col>
+                                <Col className="views" xs={2}><FaEye /> 0</Col>
                                 <Col className="share" xs={2}><FaShareAlt /></Col>
+                                <Col className="category" xs={4}><Badge><FaBookmark /> {storyInfo[0]?.story_category}</Badge></Col>
                             </Row>
-                        </div>
-                        <p className="story-category">{storyInfo[0]?.story_category}</p>
-                        <p className="story-author">by {arthorInfo[0]?.user_name}</p>
-                        <p className="story-date">{storyInfo[0]?.created_at.slice(0, 10)} created</p>
-                        
-                        <div className="story-description">
-                            <h5>Description</h5>
-                            <p></p>
-                        </div>
+                        </Container>
+                        {/* <p className="story-date">created on {storyInfo[0]?.created_at.slice(0, 10)}</p> */}
+                        <Container className="story-description">
+                            <h2 className="description-title">Description</h2>
+                            <hr className="custom-hr"/>
+                            <div>{storyCover[0]?.content}</div>
+                        </Container>
+                        <div className="story-date"><FaRegStickyNote /> created on {storyInfo[0]?.created_at.slice(0, 10)}</div>
                         {/* <div className="comments-section">
                             <h5>Comments</h5>
                             {story.commentsList.map((comment, index) => (
@@ -132,7 +132,7 @@ function MyModal() {
                     </Col>
                 </Row>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className="buttons">
                 {isAuthor && (
                     <Button as={NavLink} to={`/EditStory/${postId}`} className="edit-btn">
                         EDIT
