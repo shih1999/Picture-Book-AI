@@ -72,8 +72,8 @@ class Post {
         return result.affectedRows; 
     }
 
-    static async findAllSorted(sortway) {
-        const sql = `SELECT * FROM posts ORDER BY ${sortway} ASC`;
+    static async findAllSorted(sortway,descorasc) {
+        const sql = `SELECT * FROM posts ORDER BY ${sortway} ${descorasc}`;
         const [rows] = await db.execute(sql);
         return rows;
     }
@@ -83,9 +83,9 @@ class Post {
         const [rows] = await db.execute(sql,[sortedBy]);
         return rows;
     }
-    static async findcategoryandway(sortedBy,sortway) {
+    static async findcategoryandway(sortedBy,sortway,descorasc) {
         
-        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY ${sortway} ASC`;
+        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY ${sortway} ${descorasc}`;
         const [rows] = await db.execute(sql,[sortedBy]);
         return rows;
     }

@@ -91,9 +91,10 @@ exports.sorted = async (req, res, next) => {
     try {
         const catgory = req.body.sortedBycatgory;
         const sortway = req.body.sortedByway;
+        const descorasc = req.body.DESCorASC || "DESC";
         if(catgory){
             if(sortway){
-                const posts = await Post.findcategoryandway(catgory,sortway);
+                const posts = await Post.findcategoryandway(catgory,sortway,descorasc);
 
                 if (posts.length > 0) {
                     res.status(200).json({ message: 'Posts sorted successfully。', posts });
@@ -109,12 +110,11 @@ exports.sorted = async (req, res, next) => {
                 } else {
                     res.status(404).json({ message: 'No such posts Category' });
                 } 
-            }
-            
+            } 
         }
         else if(sortway){
             if(catgory){
-                const posts = await Post.findcategoryandway(catgory,sortway);
+                const posts = await Post.findcategoryandway(catgory,sortway,descorasc);
 
                 if (posts.length > 0) {
                     res.status(200).json({ message: 'Posts sorted successfully。', posts });
@@ -123,7 +123,7 @@ exports.sorted = async (req, res, next) => {
                 } 
             }
             else{
-                const posts = await Post.findAllSorted(sortway);
+                const posts = await Post.findAllSorted(sortway,descorasc);
 
                 if (posts.length > 0) {
                     res.status(200).json({ message: 'Posts sorted successfully。', posts });
@@ -132,7 +132,6 @@ exports.sorted = async (req, res, next) => {
                 }
             } 
         }
-
         if (posts.length > 0) {
             res.status(200).json({ message: 'Posts sorted successfully。', posts });
         } else {
