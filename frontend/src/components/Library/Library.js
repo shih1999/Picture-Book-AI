@@ -11,21 +11,32 @@ function Library() {
     const [allStories, setAllStories] = useState([]);
     const [allCovers, setAllCovers] = useState({});
     const [allAuthors, setAllAuthors] = useState({});
-    const [category, setCategory] = useState("");
-    const [sortBy, setSortBy] = useState("");
-    const [order, setOrder] = useState("");
+    const [category, setCategory] = useState("all");
+    const [sortBy, setSortBy] = useState("created_at");
+    const [order, setOrder] = useState("DESC");
 
 
     useEffect(() => {
-        console.log(category);
-        console.log(sortBy);
-        console.log(order);
+        // console.log(category);
+        // console.log(sortBy);
+        // console.log(order);
 
-        const payload = {
-            "sortedBycatgory": category,
-            "sortedByway": sortBy,
-            "DESCorASC": order
-        };
+        let payload = {};
+        if (category === "all") {
+            payload = {
+                "sortedByway": sortBy,
+                "DESCorASC": order
+            };
+        }
+        else {
+            payload = {
+                "sortedBycatgory": category,
+                "sortedByway": sortBy,
+                "DESCorASC": order
+            };
+        }
+        console.log(payload);
+
         // fetching stories
         axios.post('http://localhost:4000/posts', payload)
             .then(async response => {
@@ -127,7 +138,7 @@ function Library() {
             <Row>
                 <Col xs={3} id="sidebar-wrapper" className="category-select">
                     <Nav className="flex-column">
-                        <Nav.Link href="#all" className="category-btn" onClick={() => handleCategoryClick("")}>All</Nav.Link>
+                        <Nav.Link href="" className="category-btn" onClick={() => handleCategoryClick("all")}>All</Nav.Link>
                         <Nav.Link href="#sketch" className="category-btn" onClick={() => handleCategoryClick("sketch")}>Sketch</Nav.Link>
                         <Nav.Link href="#cartoon" className="category-btn" onClick={() => handleCategoryClick("cartoon")}>Cartoon</Nav.Link>
                         <Nav.Link href="#anime" className="category-btn" onClick={() => handleCategoryClick("anime")}>Anime</Nav.Link>
