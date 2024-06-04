@@ -8,12 +8,6 @@ class User {
     }
     async save(){
 
-        // let d = new Date();
-        // let yyyy = d.getFullYear();
-        // let mm = d.getMonth() + 1;
-        // let dd = d.getDate();
-        // let createdAtDate = `${yyyy}-${mm}-${dd}`;
-
         let sql = `
         INSERT INTO users(
             email_address,
@@ -29,8 +23,10 @@ class User {
 
         return db.execute(sql);
     }
-    static findAll(){
-
+    static async findById (user_id) {
+        let sql = `SELECT * FROM users WHERE user_id = ?`;
+        const [rows] = await db.execute(sql, [user_id]); 
+        return rows.length > 0 ? rows[0] : null; 
     }
     
     static findByName(user_name) {

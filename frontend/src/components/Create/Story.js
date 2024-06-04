@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
@@ -12,10 +12,13 @@ const ChildBookEditor = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
-  const [postID, setPostID] = useState();
+  // const [postID, setPostID] = useState(5);
 
+  // useEffect(() => {
+  //   console.log(postID) 
+  // },[postID])
 
-  const goBackToHomePage = () =>{
+  const goBackToHomePage = async () =>{
     window.location.href = "/";
   };
 
@@ -69,7 +72,7 @@ const ChildBookEditor = () => {
     // } catch (error) {
     //   console.error("Error:", error);
     // }
-    setGallery([...gallery, "https://via.placeholder.com/512"]);
+    setGallery([...gallery, "https://as.chdev.tw/web/article/a/d/4/acb39e71-d6d7-431b-b884-1891db9557611619606801.jpg"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };
@@ -78,7 +81,7 @@ const ChildBookEditor = () => {
     handleImageChange(image);
   };
 
-  const SaveEveryPages = async (page) =>{
+  const SaveEveryPages = async (page, postID) =>{
     let payload = {
       post_id: postID,
       page_number: page.id,
@@ -87,22 +90,22 @@ const ChildBookEditor = () => {
       layout: page.layout
     };
     console.log(payload);
-    // try {
-    //   const response = await axios.post('http://localhost:4000/contents/create',payload,
-    //   {
-    //       headers: {
-    //           'Content-Type': 'application/json',
-    //       },
-    //   });
+    try {
+      const response = await axios.post('http://localhost:4000/contents/create',payload,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
 
-    //   const data = response.data;
+      const data = response.data;
 
-    //   if (response.status === 201) {
-    //       alert(data.message);
-    //   }
-    // } catch (error) {
-    //     alert('Error registering user');
-    // };
+      if (response.status === 201) {
+          alert(data.message);
+      }
+    } catch (error) {
+        alert('Error registering user');
+    };
   };
 
   const handleSave = async () => {
@@ -112,41 +115,40 @@ const ChildBookEditor = () => {
       story_category: localStorage.getItem("style")
     };
 
-    // try {
-    //     const response = await axios.post('http://localhost:4000/posts/create',payload,
-    //     {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
+    try {
+        const response = await axios.post('http://localhost:4000/posts/create',payload,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
   
-    //     const data = response.data;
-    //     console.log(data);
-    //     if (response.status === 200) {
-    //       // alert("Login successful");
-    //       setPostID(data.post_id);
+        const data = response.data;
+        console.log(data);
+        // if (response.status === 200) {
+        //   // alert("Login successful");
+        //   console.log(data.post_id)
           
+
+        // }
+
+        if (response.status === 201) {
           
-    //     }
-
-    //     if (response.status === 201) {
-    //         alert(data.message);
-    //     }
-    //   } catch (error) {
-    //       alert('Error registering user');
-    //   };
-    console.log(payload);
-
-    for (let i = 0; i < pages.length; i += 1){
-      // await console.log(pages[i])
-      await SaveEveryPages(pages[i]);
-    };
-    
-    await goBackToHomePage();
-
-
-    
-  };
+            alert(data.message);
+            const newPostID = data.post_id;
+            console.log(newPostID);
+            // setPostID(data.post_id);
+            
+            for (let i = 0; i < pages.length; i += 1) {
+              await SaveEveryPages(pages[i], newPostID);
+            }
+            
+            goBackToHomePage();
+          }
+        } catch (error) {
+          alert('Error registering user');
+        }
+      };
 
   return (
     <Container fluid className="story-section">

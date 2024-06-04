@@ -994,8 +994,8 @@ button:focus {
 .mystory-container {
   max-width: 800px;
   margin: auto;
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   padding: 0 15px;
   border-radius: 15px;
   background-color: white;
@@ -1004,20 +1004,22 @@ button:focus {
 .mystory-container .personal-info {
   width: 100%;
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   padding: 30px;
   background-color: white;
 }
 
-.mystory-container .personal-info .Img {
+.mystory-container .personal-info .head-photo {
+  border-radius: 50%;
   display: flex;
-  width: 100%;
-  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .info-text{
   display: flex;
   flex-direction: column;
+  text-align: left;
   justify-content: space-between;
   height: 100%;
   color: #000000;
@@ -1037,7 +1039,7 @@ button:focus {
   width: 100%;
   height: 0.1px;
   background-color: white;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .mystory-container .works {
@@ -1046,17 +1048,28 @@ button:focus {
   padding: 30px;
 }
 
-.mystory-container .works h1 {
+.mystory-container .works .title {
   margin-bottom: 20px;
+  color:#f76363
 }
 
 .mystory-container .book {
   border-radius: 30px;
-  background-color: #fff3f3;
-  border-color: #f5aaaa;
-  border-width: 3px;
+  background-color: #FFF4F4;
+  /* border-color: #f8e7e7;
+  border-width: 3px; */
+  border-width: 0px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   text-align: center; 
+  margin: 15px auto;
+  margin-bottom: 30px;
+}
+
+.mystory-container .book-link:hover, 
+.mystory-container .book-link:active, 
+.mystory-container .book-link {
+    text-decoration: none;
+    color: inherit; /* To ensure the link color matches the text color */
 }
 
 .mystory-container .works button {
@@ -1162,4 +1175,52 @@ button:focus {
   color: #ffffff !important;
   background-color: #ffa1a1 !important;
   border-color: #ffa1a1 !important;
+}
+
+/* --------- */
+/* ViewStory */
+/* --------- */
+
+.viewstory-container {
+  height:770px;
+}
+
+.viewstory-container .popup-content {
+  z-index: 1055 !important;
+}
+
+.viewstory-container .model-content {
+  min-height: 60px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.viewstory-modal .close-btn {
+  color: #f64b4b !important;
+}
+
+.viewstory-modal .viewstory-arthor {
+  color: #f5aaaa !important;
+  font-size: 24px;
+}
+
+.viewstory-modal .viewstory-icon {
+  color: #f5aaaa !important;
+  font-size: 40px;
+}
+
+
+.viewstory-modal .view-btn {
+  width: 100px;
+  color: white !important;
+  background-color: #f64b4b !important;
+  border-width: 0px;
+}
+
+.viewstory-modal .edit-btn {
+  width: 100px;
+  color: white !important;
+  background-color: #f64b4b !important;
+  border-width: 0px;
 }

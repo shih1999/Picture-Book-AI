@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
-import getImage from './api/get-image';
+// import getImage from './api/get-image';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 
-const EditStory = () => {
+const ReadStory = () => {
   const {postId} = useParams();
   // const postId = 1;
   const [pages, setPages] = useState([]);
@@ -42,111 +42,98 @@ const EditStory = () => {
     window.location.href = "/";
   };
 
-  // const handleAddPage = () => {
-  //   const newPage = { page_id: pages.length + 1, post_id: postId, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
-  //   setPages([...pages, newPage]);
-  //   setCurrentPage(newPage.id);
-  // };
 
-  // const handleDeletePage = () => {
-  //   const updatedPages = pages.filter((page) => page.id !== currentPage);
-  //   setPages(updatedPages);
-  //   setCurrentPage(updatedPages.length > 0 ? updatedPages[0].id : null);
-  // };
+//   const handleImageChange = (image) => {
+//     const updatedPages = pages.map((page) =>
+//       page.page_id === currentPage ? { ...page, image_url : image } : page
+//     );
+//     setPages(updatedPages);
+//   };
 
-  const handleImageChange = (image) => {
-    const updatedPages = pages.map((page) =>
-      page.page_id === currentPage ? { ...page, image_url : image } : page
-    );
-    setPages(updatedPages);
-  };
+//   const handleTextChange = (text) => {
+//     const updatedPages = pages.map((page) =>
+//       page.page_id === currentPage ? { ...page, content : text } : page
+//     );
+//     setPages(updatedPages);
+//   };
 
-  const handleTextChange = (text) => {
-    const updatedPages = pages.map((page) =>
-      page.page_id === currentPage ? { ...page, content : text } : page
-    );
-    setPages(updatedPages);
-  };
+//   const handleLayoutChange = (newLayout) => {
+//     // console.log(newLayout)
+//     const updatedPages = pages.map((page) =>
+//       page.page_id === currentPage ? { ...page, layout: newLayout } : page
+//     );
+//     // console.log(updatedPages)
+//     setPages(updatedPages);
+//   };
 
-  const handleLayoutChange = (newLayout) => {
-    // console.log(newLayout)
-    const updatedPages = pages.map((page) =>
-      page.page_id === currentPage ? { ...page, layout: newLayout } : page
-    );
-    // console.log(updatedPages)
-    setPages(updatedPages);
-  };
-
-  const handleSearchTermChange = async (e) => {
-    e.preventDefault();
-    // try {
-    //   const data = await getImage(searchTerm);
-    //   if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
-    //     throw new Error("Error fetching data from chat-gpt API");
-    //   }
+//   const handleSearchTermChange = async (e) => {
+//     e.preventDefault();
+//     // try {
+//     //   const data = await getImage(searchTerm);
+//     //   if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
+//     //     throw new Error("Error fetching data from chat-gpt API");
+//     //   }
       
-    //   // Handle the response data as needed
+//     //   // Handle the response data as needed
       
-    //   console.log("ChatGPT Response:", data);
-    //   setGallery([...gallery, data]);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
-    setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
-    // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
-    console.log(gallery)
-  };
+//     //   console.log("ChatGPT Response:", data);
+//     //   setGallery([...gallery, data]);
+//     // } catch (error) {
+//     //   console.error("Error:", error);
+//     // }
+//     setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
+//     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
+//     console.log(gallery)
+//   };
 
-  const handleImageSelect = (image) => {
-    handleImageChange(image);
-  };
+//   const handleImageSelect = (image) => {
+//     handleImageChange(image);
+//   };
 
-  const EditEveryPages = async (page) =>{
-    let payload = {
-      content: page.content,
-      image_url: page.image_url
-    };
-    console.log(payload);
-    try {
-      const response = await axios.put('http://localhost:4000/contents/modify/'+page.page_id ,payload,
-      {
-          headers: {
-              'Content-Type': 'application/json',
-          },
-      });
+//   const EditEveryPages = async (page) =>{
+//     let payload = {
+//       content: page.content,
+//       image_url: page.image_url
+//     };
+//     console.log(payload);
+//     try {
+//       const response = await axios.put('http://localhost:4000/contents/modify/'+page.page_id ,payload,
+//       {
+//           headers: {
+//               'Content-Type': 'application/json',
+//           },
+//       });
 
-      // const data = response.data;
+//       // const data = response.data;
 
-      // if (response.status === 200) {
-      //     alert(data.message);
-      // }
-    } catch (error) {
-        alert('Error registering user');
-    };
-  };
+//       // if (response.status === 200) {
+//       //     alert(data.message);
+//       // }
+//     } catch (error) {
+//         alert('Error registering user');
+//     };
+//   };
 
-  const handleEdit = async () => {
+//   const handleEdit = async () => {
     
-    for (let i = 0; i < pages.length; i += 1){
-      // await console.log(pages[i])
-      await EditEveryPages(pages[i]);
-    };
+//     for (let i = 0; i < pages.length; i += 1){
+//       // await console.log(pages[i])
+//       await EditEveryPages(pages[i]);
+//     };
     
-    await goBackToHomePage();
+//     await goBackToHomePage();
 
 
     
-  };
+//   };
 
   return (
     <Container fluid className="story-section">
       <Row>
-        <Col md = {{ span: 4 , offset: 3 }}>
-        </Col>
         <Col>
-          <Button variant="primary" onClick={handleEdit} >
+          {/* <Button variant="primary" onClick={handleEdit} >
             Edit Story
-          </Button>
+          </Button> */}
         </Col>
       </Row>
       <Row >
@@ -164,7 +151,7 @@ const EditStory = () => {
           
         </Col>
         <Col md={7}>
-          <h4>Editor</h4>
+          
           <div className={`d-flex ${pages.find((page) => page.page_id === currentPage)?.layout}`}>
             {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-left') && (
               <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
@@ -173,13 +160,9 @@ const EditStory = () => {
               {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-top') && (
                 <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
               )}
-              <Form.Control
-                className='w-100 h-100'
-                id='page-text'
-                as="textarea"
-                value={pages.find((page) => page.page_id === currentPage)?.content}
-                onChange={(e) => handleTextChange(e.target.value)}
-              />
+              <p className='w-100 h-100 text-center text-monospace p-1 lh-lg' id='page-text'>
+                {pages.find((page) => page.page_id === currentPage)?.content}
+              </p>
               {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-bottom') && (
                 <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
               )}
@@ -195,16 +178,16 @@ const EditStory = () => {
             <Button variant="primary" onClick={() => handleLayoutChange('image-bottom')}>
               Image Bottom
             </Button> */}
-            <Button variant="primary" onClick={() => handleLayoutChange('image-left')}>
+            {/* <Button variant="primary" onClick={() => handleLayoutChange('image-left')}>
               Image Left
             </Button>
             <Button variant="primary" onClick={() => handleLayoutChange('image-right')}>
               Image Right
-            </Button>
+            </Button> */}
           </div>
         </Col>
         <Col md={3} className='story-gallery'>
-          <h4>Gallery</h4>
+          {/* <h4>Gallery</h4>
           <Form>
             <Form.Group controlId='prompt'>
               <Form.Label>Search Images</Form.Label>
@@ -230,7 +213,7 @@ const EditStory = () => {
             >
               <Image width={150} height={150} src={image} thumbnail />
             </div>
-          ))}
+          ))} */}
         </Col>
       </Row>
       {/* <Row>
@@ -247,4 +230,4 @@ const EditStory = () => {
   );
 };
 
-export default EditStory;
+export default ReadStory;

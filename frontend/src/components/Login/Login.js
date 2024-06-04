@@ -29,6 +29,8 @@ function Login() {
             if (response.status === 200) {
                 alert("Login successful");
                 localStorage.setItem("uid", data.user.user_id)
+                localStorage.setItem("uemail", data.user.email_address)
+                localStorage.setItem("uname", data.user.user_name)
                 window.location.href = "/";
             }
         } catch (error) {

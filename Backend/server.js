@@ -18,6 +18,9 @@ app.use((err, req, res, next) => {
   console.log(err.name);
   console.log(err.code);
 
+  res.status(400).json({
+    message: "...",
+  });
   res.status(500).json({
     message: "Something went rely wrong",
   });

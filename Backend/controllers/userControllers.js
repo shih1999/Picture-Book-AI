@@ -32,6 +32,20 @@ exports.checkUser = async (req, res, next) => {
     }
 }
 
+exports.getUserById = async (req, res, next) => {
+    try {
+        const userId = req.params.user_id;
+        const user = await User.findById(userId);
+
+        if (user) {
+            res.status(200).json({message: 'User found.', user });
+        } else {
+            res.status(404).json({ message: 'User not found.' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving user', error });
+    }
+};
 // exports.getPostById = async(req,res,next)=>{
 
 //     res.send("Get Post By ID Route");

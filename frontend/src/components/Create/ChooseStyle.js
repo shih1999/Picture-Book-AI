@@ -6,10 +6,10 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 
-import anime from "../../assets/Styles/Anime.png"
+import anime from "../../assets/Styles/Anime.jpg"
 import oilpainting from "../../assets/Styles/OilPainting.jpg"
 import cartoon from "../../assets/Styles/cartoon.jpg"
-import watercolor from "../../assets/Styles/watercolor.png"
+import watercolor from "../../assets/Styles/watercolor.jpg"
 import scifi from "../../assets/Styles/scifi.jpg"
 import sketch from "../../assets/Styles/sketch.jpg"
 

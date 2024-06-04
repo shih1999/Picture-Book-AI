@@ -8,8 +8,11 @@ router
     .post(userControllers.createNewUser);
 router
     .route("/login")
-    .post(userControllers.checkUser);
+    .post(userControllers.checkUser);    
 
+router
+    .route('/:user_id')
+    .get(userControllers.getUserById);
 // router.route("/:id").get(userControllers.getPostById);
 
 module.exports = router;

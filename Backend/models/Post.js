@@ -9,8 +9,8 @@ class Post {
     async save() {
         let d = new Date();
         let yyyy = d.getFullYear();
-        let mm = ('0' + (d.getMonth() + 1)).slice(-2); // 月份补零
-        let dd = ('0' + d.getDate()).slice(-2); // 日期补零
+        let mm = ('0' + (d.getMonth() + 1)).slice(-2); 
+        let dd = ('0' + d.getDate()).slice(-2);
         let hh = ('0' + d.getHours()).slice(-2);
         let min = ('0' + d.getMinutes()).slice(-2);
         let ss = ('0' + d.getSeconds()).slice(-2);
@@ -31,7 +31,9 @@ class Post {
         )
         `;
         
-        return db.execute(sql);
+        const [result] = await db.execute(sql);
+        const post_id = result.insertId;
+        return post_id;
     }
 
     static async findByPostId(post_id) {
@@ -69,18 +71,38 @@ class Post {
         const [result] = await db.execute(sql, [comments_count, post_id]);
         return result.affectedRows; 
     }
-
-    static async findAll(orderBy){
-        let sql = `SELECT * FROM posts ORDER BY ${orderBy} DESC`;
+    static async findAll() {
+        const sql = `SELECT * FROM posts ORDER BY created_at DESC`;
         const [rows] = await db.execute(sql);
-        return rows; 
+        return rows;
     }
-    static async findAllCategory(category){
-        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY likes_count DESC`;
-        const [rows] = await db.execute(sql,[category]);
-        return rows; 
+    static async findAllSorted(sortway,descorasc) {
+        const sql = `SELECT * FROM posts ORDER BY ${sortway} ${descorasc}`;
+        const [rows] = await db.execute(sql);
+        return rows;
     }
-    
+    static async findcategory(sortedBy) {
+        
+        let sql = `SELECT * FROM posts WHERE story_category = ?`;
+        const [rows] = await db.execute(sql,[sortedBy]);
+        return rows;
+    }
+    static async findcategoryandway(sortedBy,sortway,descorasc) {
+        
+        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY ${sortway} ${descorasc}`;
+        const [rows] = await db.execute(sql,[sortedBy]);
+        return rows;
+    }
+    static async getByPostId(post_id) {
+        let sql = `SELECT * FROM posts WHERE post_id = ?`;
+        const [result] = await db.execute(sql, [post_id]);
+        return result; 
+    }
+    static async findUserIdByPostId(post_id) {
+        let sql = `SELECT user_id FROM posts WHERE post_id = ?`;
+        const [rows] = await db.execute(sql, [post_id]);
+        return rows.length > 0 ? rows[0].user_id : null;
+    }
     static async deleteByPostId(post_id) {
         let sql = `DELETE FROM posts WHERE post_id = ?`;
         const [result] = await db.execute(sql, [post_id]);
@@ -100,10 +122,6 @@ class Post {
         return result.affectedRows; 
     }
     
-    // static deleteByPostId(post_id) {
-    //     let sql = `DELETE FROM posts WHERE post_id = ?`;
-    //     return db.execute(sql, [post_id]);
-    // }
 }
 
 module.exports = Post;
