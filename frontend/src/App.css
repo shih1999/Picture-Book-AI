@@ -1108,52 +1108,77 @@ button:focus {
 
 .library-container .category-select {
   max-width: 200px;
-  margin-top: 135px;
+  margin-top: 150px;
   margin-right: 30px;
 }
 
 .library-container .category-btn {
   padding: 30px;
+  font-size: 20px;
   text-align: center; 
   color: #ffffff !important;
-  background-color: #ffa1a1;
-  border-color: #f5aaaa;
-  border-bottom: 3px solid;
-  border-bottom-color: #f76363
+  background-color: #FFB9B9;
+  border-color: #FFB9B9;
+  border-bottom: 2.5px solid;
+  border-bottom-color: #ffa1a1;
+  margin-bottom: 1.5px;
+  box-shadow: 0px 0px 5px #ffa1a1;
+}
+
+.library-container .category-btn:hover {
+  background-color:#ffa1a1;
 }
 .library-container .category-btn-2 {
   padding: 30px;
   text-align: center; 
   color: #ffffff !important;
-  background-color: #ffa1a1;
-  border-color: #f5aaaa;
+  background-color: #FFB9B9;
+  border-color: #FFB9B9;
+  box-shadow: 0px 2px 2px #ffa1a1;
+}
+.library-container .category-btn-2:hover {
+  background-color:#ffa1a1;
 }
 
-.library-container .sort-method {
+.library-container .sort-options {
   max-width: 100px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.library-container .sort-method .sort-btn {
+.library-container .sort-options .sort-btn {
   color: #ffffff !important;
   background-color: #FD5E5E !important;
   border-color: #FD5E5E !important;
 }
 
-.library-container .sort-method .sort-btn:hover {
+.library-container .sort-options .sort-btn:hover {
   color: #ffffff !important;
   background-color: #ffa1a1 !important;
   border-color: #ffa1a1 !important;
 }
 
+
 .library-container .book {
-  border-radius: 30px;
-  background-color:#f5aaaa;
-  border-color: #f5aaaa;
-  border-width: 3px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background-color:#ffdbdb;
+  border-width: 0px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
   text-align: center; 
+  margin: 15px auto;
+  margin-bottom: 30px;
+}
+
+.library-container .story-title {
+  color: #FD5E5E;
+  font-weight: bold;
+}
+
+.library-container .book-link:hover, 
+.library-container .book-link:active, 
+.library-container .book-link {
+    text-decoration: none;
+    color: inherit; /* To ensure the link color matches the text color */
 }
 
 .library-container .story-status {
@@ -1224,3 +1249,11 @@ button:focus {
   background-color: #f64b4b !important;
   border-width: 0px;
 }
+
+.viewstory-modal .edit-btn:hover {
+  background-color: #ffa1a1 !important;
+}
+
+.viewstory-modal .view-btn:hover {
+  background-color: #ffa1a1 !important;
+}  

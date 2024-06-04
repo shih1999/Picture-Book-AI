@@ -48,7 +48,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/ChooseStyle" element={<ChooseStyle />} />
             {<Route path="/Library" element={<Library />} />}
-            <Route path="/ReadStory/:postId" element={<ReadStory />} />
+            {<Route path="/ReadStory/:postId" element={<ReadStory />} />}
             {<Route path="/mystory" element={<MyStory />} />}
             {<Route path="/login" element={<Login />} />}
             {<Route path="/signup" element={<SignUp />} />}

@@ -82,7 +82,7 @@ function MyModal() {
         // setCover([
         //     { "page_id": 3, "post_id": 2, "page_number": 3, "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg", "content": "big fdswolf", "layout": "up" }
         // ]);
-        // localStorage.setItem("uid", 2);
+        // localStorage.setItem("uid", 1);
     }, [postId]);
     
     useEffect(() => {

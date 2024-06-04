@@ -61,9 +61,9 @@ function MyStory() {
             // get cover images
             const coverPromises = publishedIDs.map(async publishedID =>
                 axios.get(`http://localhost:4000/contents/cover/${publishedID}`)
-                    .then(async res => ({
+                    .then(async response => ({
                         id: publishedID,
-                        coverUrl: res.data.postPage.image_url
+                        coverUrl: response.data.postPage.image_url
                 }))
             );
             const coverResults = await Promise.allSettled(coverPromises);
@@ -94,6 +94,11 @@ function MyStory() {
         //     { "post_id": 2, "user_id": 1, "title": "wedfdday", "created_at": "2024-06-01T23:35:28.000Z", "likes_count": 0, "comments_count": 0, "story_category": "romatic", "published": { "type": "Buffer", "data": [ 1 ] } },
         //     { "post_id": 3, "user_id": 1, "title": "wedfdday", "created_at": "2024-06-01T23:35:28.000Z", "likes_count": 0, "comments_count": 0, "story_category": "romatic", "published": { "type": "Buffer", "data": [ 1 ] } }
         // ]);
+        // setEditingCovers({
+        //     4: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg",
+        //     5: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg",
+        //     6: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"
+        // });
     }, [user_id]);
 
     const handleLinkClick = () => {
