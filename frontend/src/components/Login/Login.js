@@ -52,6 +52,7 @@ function Login() {
                     />
                 </Form.Group>
                 <Form.Group className="form-group" controlId="password">
+                <Form.Label htmlFor="username">Password</Form.Label>
                     <Form.Control
                         type="password"
                         placeholder="Enter password"
