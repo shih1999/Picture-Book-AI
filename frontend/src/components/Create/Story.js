@@ -81,7 +81,7 @@ const ChildBookEditor = () => {
     handleImageChange(image);
   };
 
-  const SaveEveryPages = async (page) =>{
+  const SaveEveryPages = async (page, postID) =>{
     let payload = {
       post_id: postID,
       page_number: page.id,
@@ -135,24 +135,20 @@ const ChildBookEditor = () => {
         if (response.status === 201) {
           
             alert(data.message);
-            setPostID(()=>data.post_id);
+            const newPostID = data.post_id;
+            console.log(newPostID);
+            // setPostID(data.post_id);
             
-        }
-      } catch (error) {
+            for (let i = 0; i < pages.length; i += 1) {
+              await SaveEveryPages(pages[i], newPostID);
+            }
+            
+            goBackToHomePage();
+          }
+        } catch (error) {
           alert('Error registering user');
+        }
       };
-    console.log(payload);
-
-    for (let i = 0; i < pages.length; i += 1){
-      // await console.log(pages[i])
-      await SaveEveryPages(pages[i]);
-    };
-    
-    await goBackToHomePage();
-
-
-    
-  };
 
   return (
     <Container fluid className="story-section">
