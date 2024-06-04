@@ -17,23 +17,23 @@ const EditStory = () => {
   // const [postID, setPostID] = useState(5);
 
   useEffect(() => {
-    try {
-      const response = axios.get('localhost:4000/contents/'+postId,
-      {
-          headers: {
-              'Content-Type': 'application/json',
-          },
-      });
+    
+    axios.get('http://localhost:4000/contents/'+postId,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      alert(res.data.message);
+      setPages(res.data.postPages);
 
-      const data = response.data;
-
-      if (response.status === 200) {
-          alert(data.message);
-          setPages(data.postPages)
-      }
-    } catch (error) {
-        alert('Error registering user');
-    }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    
   }, []);
 
   // useEffect(() => {
@@ -110,7 +110,7 @@ const EditStory = () => {
     };
     console.log(payload);
     try {
-      const response = await axios.put('localhost:4000/contents/modify/'+page.page_id ,payload,
+      const response = await axios.put('http://localhost:4000/contents/modify/'+page.page_id ,payload,
       {
           headers: {
               'Content-Type': 'application/json',
