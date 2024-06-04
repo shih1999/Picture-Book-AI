@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 // import { text } from 'body-parser';
 
 

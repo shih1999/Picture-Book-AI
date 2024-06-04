@@ -14,9 +14,9 @@ const ChildBookEditor = () => {
   const [title, setTitle] = useState("");
   // const [postID, setPostID] = useState(5);
 
-  useEffect(() => {
-    console.log(postID) 
-  },[postID])
+  // useEffect(() => {
+  //   console.log(postID) 
+  // },[postID])
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
