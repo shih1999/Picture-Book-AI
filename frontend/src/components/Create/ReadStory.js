@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
-// import getImage from './api/get-image';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-
+// { page_id: 1, post_id: 1, page_number: 1, image_url: "https://via.placeholder.com/512", content: "big fdswolfsdsddsdsdsdsds", layout: "image-left" },
+//   { page_id: 2, post_id: 1, page_number: 2, image_url: "https://via.placeholder.com/512", content: "爸爸媽媽一起出去玩，真的好開心喔", layout: "image-right" }
 
 const ReadStory = () => {
   const {postId} = useParams();
   // const postId = 1;
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
-  // const [title, setTitle] = useState("");
-  // const [postId, setpostId] = useState(5);
+
 
 
   useEffect(() => {
@@ -37,96 +35,6 @@ const ReadStory = () => {
   }, []);
 
 
-
-  const goBackToHomePage = async () =>{
-    window.location.href = "/";
-  };
-
-
-//   const handleImageChange = (image) => {
-//     const updatedPages = pages.map((page) =>
-//       page.page_id === currentPage ? { ...page, image_url : image } : page
-//     );
-//     setPages(updatedPages);
-//   };
-
-//   const handleTextChange = (text) => {
-//     const updatedPages = pages.map((page) =>
-//       page.page_id === currentPage ? { ...page, content : text } : page
-//     );
-//     setPages(updatedPages);
-//   };
-
-//   const handleLayoutChange = (newLayout) => {
-//     // console.log(newLayout)
-//     const updatedPages = pages.map((page) =>
-//       page.page_id === currentPage ? { ...page, layout: newLayout } : page
-//     );
-//     // console.log(updatedPages)
-//     setPages(updatedPages);
-//   };
-
-//   const handleSearchTermChange = async (e) => {
-//     e.preventDefault();
-//     // try {
-//     //   const data = await getImage(searchTerm);
-//     //   if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
-//     //     throw new Error("Error fetching data from chat-gpt API");
-//     //   }
-      
-//     //   // Handle the response data as needed
-      
-//     //   console.log("ChatGPT Response:", data);
-//     //   setGallery([...gallery, data]);
-//     // } catch (error) {
-//     //   console.error("Error:", error);
-//     // }
-//     setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
-//     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
-//     console.log(gallery)
-//   };
-
-//   const handleImageSelect = (image) => {
-//     handleImageChange(image);
-//   };
-
-//   const EditEveryPages = async (page) =>{
-//     let payload = {
-//       content: page.content,
-//       image_url: page.image_url
-//     };
-//     console.log(payload);
-//     try {
-//       const response = await axios.put('http://localhost:4000/contents/modify/'+page.page_id ,payload,
-//       {
-//           headers: {
-//               'Content-Type': 'application/json',
-//           },
-//       });
-
-//       // const data = response.data;
-
-//       // if (response.status === 200) {
-//       //     alert(data.message);
-//       // }
-//     } catch (error) {
-//         alert('Error registering user');
-//     };
-//   };
-
-//   const handleEdit = async () => {
-    
-//     for (let i = 0; i < pages.length; i += 1){
-//       // await console.log(pages[i])
-//       await EditEveryPages(pages[i]);
-//     };
-    
-//     await goBackToHomePage();
-
-
-    
-//   };
-
   return (
     <Container fluid className="story-section">
       <Row>
@@ -137,7 +45,7 @@ const ReadStory = () => {
         </Col>
       </Row>
       <Row >
-        <Col md={2} className='story-page'>
+        <Col md={3} className='story-page '>
           <h4>Pages</h4>
           {pages.map((page) => (
             <div
@@ -156,11 +64,11 @@ const ReadStory = () => {
             {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-left') && (
               <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
             )}
-            <div className="flex-grow-1">
+            <div className="flex-grow-1 text-ba">
               {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-top') && (
                 <Image src={pages.find((page) => page.page_id === currentPage)?.image_url} fluid />
               )}
-              <p className='w-100 h-100 text-center text-monospace p-1 lh-lg' id='page-text'>
+              <p className='w-100 h-100 text-center text-monospace px-1 lh-lg bg-white pt-5' id='page-text'>
                 {pages.find((page) => page.page_id === currentPage)?.content}
               </p>
               {pages.find((page) => page.page_id === currentPage)?.layout.includes('image-bottom') && (
@@ -186,7 +94,7 @@ const ReadStory = () => {
             </Button> */}
           </div>
         </Col>
-        <Col md={3} className='story-gallery'>
+        <Col md={2} className='story-gallery'>
           {/* <h4>Gallery</h4>
           <Form>
             <Form.Group controlId='prompt'>
