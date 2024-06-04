@@ -6,17 +6,25 @@ import axios from 'axios';
 
 
 const EditStory = () => {
+<<<<<<< Updated upstream
   // const {postId} = useParams();
   const postId = 1;
+=======
+  const {postId} = useParams();
+>>>>>>> Stashed changes
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   // const [title, setTitle] = useState("");
-  // const [postID, setPostID] = useState(5);
+  // const [postId, setpostId] = useState(5);
 
+<<<<<<< Updated upstream
   useEffect(() => {
+=======
+  useEffect( () => {
+>>>>>>> Stashed changes
     try {
       const response = axios.get('localhost:4000/contents/'+postId,
       {
@@ -37,15 +45,20 @@ const EditStory = () => {
   }, []);
 
   // useEffect(() => {
+<<<<<<< Updated upstream
   //   console.log(postID) 
   // },[postID])
+=======
+  //   console.log(postId) 
+  // },[postId])
+>>>>>>> Stashed changes
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
   };
 
   // const handleAddPage = () => {
-  //   const newPage = { page_id: pages.length + 1, post_id: postID, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
+  //   const newPage = { page_id: pages.length + 1, post_id: postId, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
   //   setPages([...pages, newPage]);
   //   setCurrentPage(newPage.id);
   // };
