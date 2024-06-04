@@ -5,13 +5,13 @@ import '../../App.css';
 import axios from 'axios';
 
 import { IoPersonCircleOutline } from "react-icons/io5";
-import { FaHeart, FaComment } from "react-icons/fa";
+import { FaHeart, FaComment, FaEye } from "react-icons/fa";
 import { FaShareAlt } from "react-icons/fa";
 
 function MyModal() {
     const user_id = parseInt(localStorage.getItem("uid"));
 
-    let { bookId } = useParams();
+    let { postId } = useParams();
     const previous_page = localStorage.getItem("pre_page"); // 0: library, 1: mystory
     const [show, setShow] = useState(true);
 
@@ -48,7 +48,7 @@ function MyModal() {
 
     useEffect(() => {
         // get story info
-        axios.get(`localhost:4000/posts/${bookId}`)
+        axios.get(`localhost:4000/posts/${postId}`)
             .then(response => {
                 setStory(response.data.userPosts);
                 const author_id = response.data.userPosts[0]?.user_id;
@@ -64,7 +64,7 @@ function MyModal() {
             });
 
         // get story cover
-        axios.get(`http://localhost:4000/contents/cover/${bookId}`)
+        axios.get(`http://localhost:4000/contents/cover/${postId}`)
             .then(response => {
                 setCover(response.data.postPage);
             })
@@ -73,17 +73,17 @@ function MyModal() {
             });
 
         // for frontend testing
-        // setStory([
-        //     { "post_id": 3, "user_id": 1, "title": "Test Book", "created_at": "2024-06-04T00:45:23.000Z", "likes_count": 0, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] }}
-        // ]);
-        // setAuthor([
-        //     { "user_id": 1, "email_address": "happy@gmail.com", "user_name": "R12528025", "user_password": "uuu" }
-        // ]);
-        // setCover([
-        //     { "page_id": 3, "post_id": 2, "page_number": 3, "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg", "content": "big fdswolf", "layout": "up" }
-        // ]);
-        // localStorage.setItem("uid", 2);
-    }, [bookId]);
+        setStory([
+            { "post_id": 3, "user_id": 1, "title": "Test Book", "created_at": "2024-06-04T00:45:23.000Z", "likes_count": 0, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] }}
+        ]);
+        setAuthor([
+            { "user_id": 1, "email_address": "happy@gmail.com", "user_name": "R12528025", "user_password": "uuu" }
+        ]);
+        setCover([
+            { "page_id": 3, "post_id": 2, "page_number": 3, "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg", "content": "big fdswolf", "layout": "up" }
+        ]);
+        localStorage.setItem("uid", 2);
+    }, [postId]);
     
     useEffect(() => {
         handleAuthorTrue();
@@ -108,6 +108,7 @@ function MyModal() {
                             <Row>
                                 <Col className="likes" xs={2}><FaHeart /> {storyInfo[0]?.likes_count}</Col>   
                                 <Col className="comments" xs={2}><FaComment /> {storyInfo[0]?.comments_count}</Col>
+                                <Col className="views" xs={2}><FaEye /></Col>
                                 <Col className="share" xs={2}><FaShareAlt /></Col>
                             </Row>
                         </div>
@@ -133,11 +134,11 @@ function MyModal() {
             </Modal.Body>
             <Modal.Footer>
                 {isAuthor && (
-                    <Button as={NavLink} to={`/contents/modify/${bookId}`} className="edit-btn">
+                    <Button as={NavLink} to={`/contents/modify/${postId}`} className="edit-btn">
                         EDIT
                     </Button>
                 )}
-                <Button as={NavLink} to={`/contents/${bookId}`} className="view-btn">
+                <Button as={NavLink} to={`/contents/${postId}`} className="view-btn">
                     VIEW
                 </Button>
             </Modal.Footer>

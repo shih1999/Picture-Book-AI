@@ -47,7 +47,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ChooseStyle" element={<ChooseStyle />} />
-            {<Route path="/library" element={<Library />} />}
+            {<Route path="/Library" element={<Library />} />}
             <Route path="/ReadStory/:postId" element={<ReadStory />} />
             {<Route path="/mystory" element={<MyStory />} />}
             {<Route path="/login" element={<Login />} />}
@@ -57,7 +57,7 @@ function App() {
             {/* <Route path="/corgi" element={<Corgi />} /> */}
             {/* <Route path="/littlethreepigs" element={<ThreeLittlePigs />} /> */}
             <Route path="/EditStory/:postId" element={<EditStory />} />
-            <Route path="/viewStory/:postId" element={<ViewStory />} />
+            <Route path="/ViewStory/:postId" element={<ViewStory />} />
           </Routes>
         </main>
         

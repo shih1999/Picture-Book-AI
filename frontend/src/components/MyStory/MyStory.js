@@ -132,7 +132,7 @@ function MyStory() {
                     {editingStories.length > 0 ? (
                         editingStories.map((story) => (
                             <Col key={story.post_id} xs={12} sm={6} md={4} lg={3}>
-                                <Link className="book-link" to={`/viewstory/${story.post_id}`} onClick={() => handleLinkClick()}>
+                                <Link className="book-link" to={`/ViewStory/${story.post_id}`} onClick={() => handleLinkClick()}>
                                 <Card className="book">
                                     <Card.Img variant="top" src={editingCovers[story.post_id]} />
                                     <Card.Body>
