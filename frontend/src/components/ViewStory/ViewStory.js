@@ -133,7 +133,7 @@ function MyModal() {
             </Modal.Body>
             <Modal.Footer>
                 {isAuthor && (
-                    <Button as={NavLink} to={`/modify/${bookId}`} className="edit-btn">
+                    <Button as={NavLink} to={`/contents/modify/${bookId}`} className="edit-btn">
                         EDIT
                     </Button>
                 )}
