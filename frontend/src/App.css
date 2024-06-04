@@ -1102,13 +1102,21 @@ button:focus {
 }
 
 .library-container .library-title {
+  font-size: 50px;
   text-align: center; 
-  color:#f64b4b
+  color:#f64b4b;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.library-container .library-icon {
+  font-size: 36px;
+  color:#f64b4b;
 }
 
 .library-container .category-select {
   max-width: 200px;
-  margin-top: 150px;
+  margin-top: 192px;
   margin-right: 30px;
 }
 
@@ -1122,13 +1130,14 @@ button:focus {
   border-bottom: 2.5px solid;
   border-bottom-color: #ffa1a1;
   margin-bottom: 1.5px;
-  box-shadow: 0px 0px 5px #ffa1a1;
+  box-shadow: 1px 1px 6px #ffa1a1;
 }
 
 .library-container .category-btn:hover {
   background-color:#ffa1a1;
 }
-.library-container .category-btn-2 {
+
+/* .library-container .category-btn-2 {
   padding: 30px;
   text-align: center; 
   color: #ffffff !important;
@@ -1138,7 +1147,7 @@ button:focus {
 }
 .library-container .category-btn-2:hover {
   background-color:#ffa1a1;
-}
+} */
 
 .library-container .sort-options {
   max-width: 100px;
@@ -1148,30 +1157,49 @@ button:focus {
 
 .library-container .sort-options .sort-btn {
   color: #ffffff !important;
-  background-color: #FD5E5E !important;
-  border-color: #FD5E5E !important;
+  background-color: #ffa1a1 !important;
+  border-width: 0px;
+  box-shadow: 2px 2px 8px #fd5e5ec0;
 }
 
 .library-container .sort-options .sort-btn:hover {
   color: #ffffff !important;
-  background-color: #ffa1a1 !important;
-  border-color: #ffa1a1 !important;
+  background-color: #FD5E5E !important;
 }
 
-
 .library-container .book {
-  border-radius: 15px;
-  background-color:#ffdbdb;
+  border-radius: 12px;
   border-width: 0px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  background-color:#ffdbdb;
+  box-shadow: 2px 2px 6px #fd5e5ec0;
   text-align: center; 
   margin: 15px auto;
   margin-bottom: 30px;
+  padding-bottom: 20px;
+  color: #FD5E5E;
 }
 
-.library-container .story-title {
-  color: #FD5E5E;
-  font-weight: bold;
+.library-container .card-text {
+  padding: 15px !important;
+  padding-top: 20px !important;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.library-container .badge {
+  color: #ffdbdb;
+  background-color: #ffa1a1 !important;
+  /* color: #ffffff;
+  background-color: #FFB9B9 !important; */
+  font-weight: 100;
+}
+
+.library-container .book .story-category {
+  font-size: 22px;
+  text-align: left;
+  padding-left: 20px !important;
+  padding-bottom: 0px;
+  color:  #ffa1a1
 }
 
 .library-container .book-link:hover, 
@@ -1181,25 +1209,51 @@ button:focus {
     color: inherit; /* To ensure the link color matches the text color */
 }
 
+.library-container .book .card-img-top{
+  padding-top: 15px !important;
+  padding-bottom: 10px !important;
+}
+
+.library-container .book .story-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.library-container .book .story-author {
+  padding-top: 0px !important;
+  font-size: 20px;
+}
+
 .library-container .story-status {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  content: center;
+  font-size: 20px;
+  color: #ffa1a1;
 }
 
 .library-container .books button {
   color: #ffffff !important;
-  background-color: #FD5E5E !important;
-  border-color: #FD5E5E !important;
+  background-color: #DC3545 !important;
+  border-width: 0px;
   width: 60%;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .library-container .books button:hover {
   color: #ffffff !important;
-  background-color: #ffa1a1 !important;
-  border-color: #ffa1a1 !important;
+  background-color: #FD5E5E!important;
+}
+
+.library-container .no-story {
+  padding-top: 100px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #DC3545;
 }
 
 /* --------- */

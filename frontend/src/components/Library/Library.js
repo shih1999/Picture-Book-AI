@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Nav, Row, Col, Card, Button, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Container, Nav, Row, Col, Card, Badge, Button, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 
-import { FaHeart, FaComment, FaEye } from "react-icons/fa";
+import { FaHeart, FaComment, FaEye, FaBookmark } from "react-icons/fa";
+import { ImBooks } from "react-icons/im";
 
 function Library() {
     const [allStories, setAllStories] = useState([]);
@@ -137,7 +138,7 @@ function Library() {
                 </Col>
                 <Col>
                     <Row>
-                        <h1 className="library-title">LIBRARY</h1>
+                        <h1 className="library-title">LIBRARY <ImBooks className="library-icon" /></h1>
                     </Row>
                     <Row className="sort-options">
                         <ToggleButtonGroup type="radio" name="sort-btns" defaultValue={1} onChange={handleSortChange}>
@@ -157,21 +158,22 @@ function Library() {
                             <Row>
                                 {allStories.length > 0 ? (
                                     allStories.map((story) => (
-                                        <Col key={story.post_id} xs={12} sm={6} md={6} lg={3}>
+                                        <Col key={story.post_id} xs={12} sm={6} md={6} lg={4}>
                                             <Link className="book-link" to={`/viewstory/${story.id}`} onClick={() => handleLinkClick()}>
                                             <Card className="book">
                                                 {/* <Card.Img variant="top" src={story.image} /> */}
+                                                <Card.Text className="story-category"><Badge><FaBookmark /> {story.story_category}</Badge></Card.Text>
                                                 <Card.Img variant="top" src={allCovers[story.post_id]} />
                                                 <Card.Body>
                                                     <Card.Title className="story-title">{story.title}</Card.Title>
                                                     <Card.Text className="story-author">by {allAuthors[story.user_id]}</Card.Text>
-                                                    <div className="story-status">
-                                                    <Row>
-                                                        <Col className="likes" xs={3}><FaHeart /> {story.likes_count}</Col>   
-                                                        <Col className="comments" xs={3}><FaComment /> {story.comments_count}</Col>
-                                                        <Col className="views" xs={3}><FaEye /> 0</Col>
-                                                    </Row>
-                                                    </div>
+                                                    <Container className="story-status" >
+                                                        <Row>
+                                                            <Col className="status" xs={4}><FaHeart /> {story.likes_count}</Col>   
+                                                            <Col className="status" xs={4}><FaComment /> {story.comments_count}</Col>
+                                                            <Col className="status" xs={4}><FaEye /> 0</Col>
+                                                        </Row>
+                                                    </Container>
                                                     <Button variant="primary">View</Button>
                                                 </Card.Body>
                                             </Card>
@@ -179,7 +181,7 @@ function Library() {
                                         </Col>
                                     ))
                                 ) : (
-                                    <p>No stories.</p>
+                                    <Container className="no-story">No stories Yet.</Container>
                                 )}
                             </Row>
                         </Container>
