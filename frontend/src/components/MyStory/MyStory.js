@@ -6,6 +6,8 @@ import axios from 'axios';
 
 import headPhoto from '../../assets/images/head_photo.png';
 
+import { FaBook, FaBookOpen } from "react-icons/fa";
+
 function MyStory() {
     const [editingStories, setEditingStories] = useState([]);
     const [editingCovers, setEditingCovers] = useState({});
@@ -125,12 +127,12 @@ function MyStory() {
                 <div></div>
             </Container>
             <Container className="works">
-                <h1 className="title">In Progress 📜</h1>
+                <h1 className="title">In Progress <FaBookOpen/></h1>
                 <Row>
                     {editingStories.length > 0 ? (
                         editingStories.map((story) => (
-                            <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
-                                <Link className="book-link" to={`/viewstory/${story.id}`} onClick={() => handleLinkClick()}>
+                            <Col key={story.post_id} xs={12} sm={6} md={4} lg={3}>
+                                <Link className="book-link" to={`/viewstory/${story.post_id}`} onClick={() => handleLinkClick()}>
                                 <Card className="book">
                                     <Card.Img variant="top" src={editingCovers[story.post_id]} />
                                     <Card.Body>
@@ -151,12 +153,12 @@ function MyStory() {
                 </Row>
             </Container>
             <Container className="works">
-                <h1 className="title">Published 📖</h1>
+                <h1 className="title">Published <FaBook /></h1>
                 <Row>
                     {publishedStories.length > 0 ? (
                         publishedStories.map((story) => (
-                            <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
-                                <Link className="book-link" to={`/viewstory/${story.id}`}>
+                            <Col key={story.post_id} xs={12} sm={6} md={4} lg={3}>
+                                <Link className="book-link" to={`/viewstory/${story.post_id}`}>
                                 <Card className="book">
                                     <Card.Img variant="top" src={publishedCovers[story.post_id]}/>
                                     <Card.Body>
