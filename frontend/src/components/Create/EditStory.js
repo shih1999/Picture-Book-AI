@@ -18,7 +18,6 @@ const EditStory = () => {
 
 
   useEffect(() => {
-    
     axios.get('http://localhost:4000/contents/'+postId,
     {
         headers: {
@@ -57,14 +56,14 @@ const EditStory = () => {
 
   const handleImageChange = (image) => {
     const updatedPages = pages.map((page) =>
-      page.id === currentPage ? { ...page, image_url : image } : page
+      page.page_id === currentPage ? { ...page, image_url : image } : page
     );
     setPages(updatedPages);
   };
 
   const handleTextChange = (text) => {
     const updatedPages = pages.map((page) =>
-      page.id === currentPage ? { ...page, content : text } : page
+      page.page_id === currentPage ? { ...page, content : text } : page
     );
     setPages(updatedPages);
   };
@@ -72,7 +71,7 @@ const EditStory = () => {
   const handleLayoutChange = (newLayout) => {
     // console.log(newLayout)
     const updatedPages = pages.map((page) =>
-      page.id === currentPage ? { ...page, layout: newLayout } : page
+      page.page_id === currentPage ? { ...page, layout: newLayout } : page
     );
     // console.log(updatedPages)
     setPages(updatedPages);
