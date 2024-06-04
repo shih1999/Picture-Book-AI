@@ -83,6 +83,12 @@ class Post {
         const [rows] = await db.execute(sql);
         return rows;
     }
+    static async findcartoon() {
+        
+        const sql = `SELECT * FROM posts WHERE story_category = 'cartoon'`;
+        const [rows] = await db.execute(sql);
+        return rows;
+    }
     
     static async getByPostId(post_id) {
         let sql = `SELECT * FROM posts WHERE post_id = ?`;

@@ -92,14 +92,29 @@ exports.getAllPostsSortedByCreatedAt = async (req, res, next) => {
         const posts = await Post.findAllSorted();
 
         if (posts.length > 0) {
-            res.status(200).json({ message: '所有帖子按创建日期排序成功。', posts });
+            res.status(200).json({ message: 'Posts sorted successfully。', posts });
         } else {
-            res.status(404).json({ message: '没有帖子。' });
+            res.status(404).json({ message: 'xxx' });
         }
     } catch (error) {
         next(error);
     }
 };
+
+exports.getcartoon = async (req, res, next) => {
+    try {
+        const posts = await Post.findcartoon();
+
+        if (posts.length > 0) {
+            res.status(200).json({ message: 'Posts sorted successfully。', posts });
+        } else {
+            res.status(404).json({ message: 'xxx' });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
 
 exports.modifyPost = async (req, res, next) => {
     try {

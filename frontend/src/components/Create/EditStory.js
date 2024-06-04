@@ -14,7 +14,8 @@ const EditStory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   // const [title, setTitle] = useState("");
-  // const [postID, setPostID] = useState(5);
+  // const [postId, setpostId] = useState(5);
+
 
   useEffect(() => {
     
@@ -36,16 +37,14 @@ const EditStory = () => {
     
   }, []);
 
-  // useEffect(() => {
-  //   console.log(postID) 
-  // },[postID])
+
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
   };
 
   // const handleAddPage = () => {
-  //   const newPage = { page_id: pages.length + 1, post_id: postID, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
+  //   const newPage = { page_id: pages.length + 1, post_id: postId, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
   //   setPages([...pages, newPage]);
   //   setCurrentPage(newPage.id);
   // };

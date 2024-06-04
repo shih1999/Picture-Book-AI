@@ -34,6 +34,11 @@ router
     .route('/')
     .get(postControllers.getAllPostsSortedByCreatedAt);
 
+router
+    .route('/A')
+    .get(postControllers.getcartoon);
+
+
 //要加上publish 變動
 // router.route("/:id").get(userControllers.getPostById);
 
