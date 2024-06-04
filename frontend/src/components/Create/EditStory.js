@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const EditStory = () => {
-  // const {postId} = useParams();
-  const postId = 1;
+  const {postId} = useParams();
+  // const postId = 1;
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
@@ -103,7 +103,7 @@ const EditStory = () => {
 
   const EditEveryPages = async (page) =>{
     let payload = {
-      article: page.content,
+      content: page.content,
       image_url: page.image_url
     };
     console.log(payload);

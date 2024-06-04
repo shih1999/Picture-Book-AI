@@ -55,7 +55,7 @@ function App() {
             <Route path="/story" element={<Story />} />
             {/* <Route path="/corgi" element={<Corgi />} /> */}
             {/* <Route path="/littlethreepigs" element={<ThreeLittlePigs />} /> */}
-            <Route path="/EditStory" element={<EditStory />} />
+            <Route path="/EditStory/:postId" element={<EditStory />} />
           </Routes>
         </main>
         
