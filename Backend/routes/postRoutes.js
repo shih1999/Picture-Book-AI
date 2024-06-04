@@ -1,5 +1,5 @@
-const express = require ('express');
-const postControllers = require('../controllers/postControllers');
+const express = require ("express");
+const postControllers = require("../controllers/postControllers");
 const router = express.Router();
 // @route GET && POST - /posts/
 
@@ -8,34 +8,34 @@ router
     .post(postControllers.createNewPost);
 
 router
-    .route('/delete/:post_id')
+    .route("/delete/:post_id")
     .delete(postControllers.deletePost);
 
 router
-    .route('/like/:post_id')
+    .route("/like/:post_id")
     .put(postControllers.likePost);
 
 router
-    .route('/modify/:post_id')
+    .route("/modify/:post_id")
     .put(postControllers.modifyPost);
 router
-    .route('/:post_id')
+    .route("/:post_id")
     .get(postControllers.getByPostID);
     
 router
-    .route('/:user_id/:p')
+    .route("/:user_id/:p")
     .get(postControllers.getUserAllPost);
 
 router
-    .route('/publish/:post_id')
+    .route("/publish/:post_id")
     .put(postControllers.changePublish);
 
 router
-    .route('/')
-    .get(postControllers.sortCategory);
+    .route("/")
+    .get(postControllers.sorted);
 
 // router
-//     .route('/A')
+//     .route("/A")
 //     .get(postControllers.getcartoon);
 
 

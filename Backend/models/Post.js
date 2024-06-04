@@ -72,24 +72,23 @@ class Post {
         return result.affectedRows; 
     }
 
-    static async findAll(category){
-        let sql = `SELECT * FROM posts WHERE story_category = ?`;
-        const [rows] = await db.execute(sql,[category]);
-        return rows; 
-    }
-    static async findAllSorted() {
-        
-        const sql = `SELECT * FROM posts ORDER BY created_at DESC`;
+    static async findAllSorted(sortway) {
+        const sql = `SELECT * FROM posts ORDER BY ${sortway} ASC`;
         const [rows] = await db.execute(sql);
         return rows;
     }
-    static async findcartoon(sortedBy) {
+    static async findcategory(sortedBy) {
         
         let sql = `SELECT * FROM posts WHERE story_category = ?`;
         const [rows] = await db.execute(sql,[sortedBy]);
         return rows;
     }
-    
+    static async findcategoryandway(sortedBy,sortway) {
+        
+        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY ${sortway} ASC`;
+        const [rows] = await db.execute(sql,[sortedBy]);
+        return rows;
+    }
     static async getByPostId(post_id) {
         let sql = `SELECT * FROM posts WHERE post_id = ?`;
         const [result] = await db.execute(sql, [post_id]);

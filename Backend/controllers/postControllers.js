@@ -87,24 +87,51 @@ exports.getUserAllPost = async (req, res, next) => {
 };
 
 
-exports.getAllPostsSortedByCreatedAt = async (req, res, next) => {
+exports.sorted = async (req, res, next) => {
     try {
-        const posts = await Post.findAllSorted();
+        const catgory = req.body.sortedBycatgory;
+        const sortway = req.body.sortedByway;
+        if(catgory){
+            if(sortway){
+                const posts = await Post.findcategoryandway(catgory,sortway);
 
-        if (posts.length > 0) {
-            res.status(200).json({ message: 'Posts sorted successfully。', posts });
-        } else {
-            res.status(404).json({ message: 'xxx' });
+                if (posts.length > 0) {
+                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
+                } else {
+                    res.status(404).json({ message: 'No such posts Category' });
+                } 
+            }
+            else{
+                const posts = await Post.findcategory(catgory);
+
+                if (posts.length > 0) {
+                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
+                } else {
+                    res.status(404).json({ message: 'No such posts Category' });
+                } 
+            }
+            
         }
-    } catch (error) {
-        next(error);
-    }
-};
+        else if(sortway){
+            if(catgory){
+                const posts = await Post.findcategoryandway(catgory,sortway);
 
-exports.sortCategory = async (req, res, next) => {
-    try {
-        const catgory = req.body.sortedBy;
-        const posts = await Post.findcartoon(catgory);
+                if (posts.length > 0) {
+                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
+                } else {
+                    res.status(404).json({ message: 'No such posts Category' });
+                } 
+            }
+            else{
+                const posts = await Post.findAllSorted(sortway);
+
+                if (posts.length > 0) {
+                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
+                } else {
+                    res.status(404).json({ message: 'No such posts Category' });
+                }
+            } 
+        }
 
         if (posts.length > 0) {
             res.status(200).json({ message: 'Posts sorted successfully。', posts });
