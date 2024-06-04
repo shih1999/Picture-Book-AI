@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
 // import ThreeLittlePigs from "./components/Library/Mock_story/ThreeLittlePigs/ThreeLittlePigs";
 // import Corgi from "./components/MyStory/Mock_story/ThreeLittlePigs/Corgi";
+import ViewStory from "./components/ViewStory/ViewStory";
 import EditStory from "./components/Create/EditStory";
 import ReadStory from "./components/Create/ReadStory";
 
@@ -56,6 +57,7 @@ function App() {
             {/* <Route path="/corgi" element={<Corgi />} /> */}
             {/* <Route path="/littlethreepigs" element={<ThreeLittlePigs />} /> */}
             <Route path="/EditStory/:postId" element={<EditStory />} />
+            <Route path="/viewStory/:postId" element={<ViewStory />} />
           </Routes>
         </main>
         

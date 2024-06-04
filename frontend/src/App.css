@@ -1039,7 +1039,7 @@ button:focus {
   width: 100%;
   height: 0.1px;
   background-color: white;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .mystory-container .works {
@@ -1175,4 +1175,52 @@ button:focus {
   color: #ffffff !important;
   background-color: #ffa1a1 !important;
   border-color: #ffa1a1 !important;
+}
+
+/* --------- */
+/* ViewStory */
+/* --------- */
+
+.viewstory-container {
+  height:770px;
+}
+
+.viewstory-container .popup-content {
+  z-index: 1055 !important;
+}
+
+.viewstory-container .model-content {
+  min-height: 60px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.viewstory-modal .close-btn {
+  color: #f64b4b !important;
+}
+
+.viewstory-modal .viewstory-arthor {
+  color: #f5aaaa !important;
+  font-size: 24px;
+}
+
+.viewstory-modal .viewstory-icon {
+  color: #f5aaaa !important;
+  font-size: 40px;
+}
+
+
+.viewstory-modal .view-btn {
+  width: 100px;
+  color: white !important;
+  background-color: #f64b4b !important;
+  border-width: 0px;
+}
+
+.viewstory-modal .edit-btn {
+  width: 100px;
+  color: white !important;
+  background-color: #f64b4b !important;
+  border-width: 0px;
 }

@@ -21,10 +21,13 @@ function Library() {
             <Row>
                 <Col xs={3} id="sidebar-wrapper" className="category-select">
                     <Nav className="flex-column">
-                        <Nav.Link href="#category1" className="category-btn">Category 1</Nav.Link>
-                        <Nav.Link href="#category2" className="category-btn">Category 2</Nav.Link>
-                        <Nav.Link href="#category3" className="category-btn-2">Category 3</Nav.Link>
-                        {/* Add more categories as needed */}
+                        <Nav.Link href="#all" className="category-btn">Sketch</Nav.Link>
+                        <Nav.Link href="#sketch" className="category-btn">Sketch</Nav.Link>
+                        <Nav.Link href="#cartoon" className="category-btn">Cartoon</Nav.Link>
+                        <Nav.Link href="#anime" className="category-btn">Anime</Nav.Link>
+                        <Nav.Link href="#oil-painting" className="category-btn">Oil Painting</Nav.Link>
+                        <Nav.Link href="#watercolor" className="category-btn">Watercolor</Nav.Link>
+                        <Nav.Link href="#scifi" className="category-btn-2">SciFi</Nav.Link>
                     </Nav>
                 </Col>
                 <Col>
