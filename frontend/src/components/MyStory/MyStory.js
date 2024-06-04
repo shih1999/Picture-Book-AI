@@ -125,10 +125,10 @@ function MyStory() {
                 <Row>
                     {editingStories.length > 0 ? (
                         editingStories.map((story) => (
-                            <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
-                                <Link className="book-link" to={`/viewstory/${story.id}`}>
+                            <Col key={story.post_id} xs={12} sm={6} md={4} lg={3}>
+                                <Link className="book-link" to={`/viewstory/${story.post_id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={editingCovers[story.id]} />
+                                    <Card.Img variant="top" src={editingCovers[story.post_id]} />
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
@@ -151,10 +151,10 @@ function MyStory() {
                 <Row>
                     {publishedStories.length > 0 ? (
                         publishedStories.map((story) => (
-                            <Col key={story.id} xs={12} sm={6} md={4} lg={3}>
-                                <Link className="book-link" to={`/viewstory/${story.id}`}>
+                            <Col key={story.post_id} xs={12} sm={6} md={4} lg={3}>
+                                <Link className="book-link" to={`/viewstory/${story.post_id}`}>
                                 <Card className="book">
-                                    <Card.Img variant="top" src={publishedCovers[story.id]}/>
+                                    <Card.Img variant="top" src={publishedCovers[story.post_id]}/>
                                     <Card.Body>
                                         <Card.Title>{story.title}</Card.Title>
                                         <Card.Text>{story.created_at.slice(0, 10)} created</Card.Text>
