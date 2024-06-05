@@ -21,24 +21,18 @@ function Library() {
         // console.log(sortBy);
         // console.log(order);
 
-        let payload = {};
-        if (category === "all") {
-            payload = {
-                "sortedByway": sortBy,
-                "DESCorASC": order
-            };
+        let params = {
+            sortedByway: sortBy,
+            DESCorASC: order
+        };
+
+        if (category !== "all") {
+            params.sortedBycatgory = category;
         }
-        else {
-            payload = {
-                "sortedBycatgory": category,
-                "sortedByway": sortBy,
-                "DESCorASC": order
-            };
-        }
-        console.log(payload);
+        console.log(params);
 
         // fetching stories
-        axios.post('http://localhost:4000/posts', payload)
+        axios.get('http://localhost:4000/posts/', {params})
             .then(async response => {
                 setAllStories(response.data.posts);
                 const storyIDs = response.data.posts.map(story => story.post_id);
@@ -70,6 +64,10 @@ function Library() {
                             id: authorID,
                             username: response.data.user.user_name
                     }))
+                    .catch(error => {
+                        console.error(`Failed to fetch author for ID ${authorID}:`, error);
+                        return { id: authorID, username: "Unknown" };
+                    })
                 );
                 const authorResults = await Promise.allSettled(authorPromises);
                 const authorsMap = authorResults.reduce((acc, author) => {
@@ -102,6 +100,7 @@ function Library() {
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash.replace("#", "");
+            setCategory(hash || "all");
         };
         window.addEventListener("hashchange", handleHashChange);
         handleHashChange(); // Call it initially to set the category based on the current hash
@@ -145,6 +144,14 @@ function Library() {
                         <Nav.Link href="#oil-painting" className="category-btn" onClick={() => handleCategoryClick("oilpainting")}>Oil Painting</Nav.Link>
                         <Nav.Link href="#watercolor" className="category-btn" onClick={() => handleCategoryClick("watercolor")}>Watercolor</Nav.Link>
                         <Nav.Link href="#scifi" className="category-btn" onClick={() => handleCategoryClick("scifi")}>SciFi</Nav.Link>
+
+                        {/* <Nav.Link className="category-btn" onClick={() => handleCategoryClick("all")}>All</Nav.Link>
+                        <Nav.Link className="category-btn" onClick={() => handleCategoryClick("sketch")}>Sketch</Nav.Link>
+                        <Nav.Link className="category-btn" onClick={() => handleCategoryClick("cartoon")}>Cartoon</Nav.Link>
+                        <Nav.Link className="category-btn" onClick={() => handleCategoryClick("anime")}>Anime</Nav.Link>
+                        <Nav.Link className="category-btn" onClick={() => handleCategoryClick("oilpainting")}>Oil Painting</Nav.Link>
+                        <Nav.Link className="category-btn" onClick={() => handleCategoryClick("watercolor")}>Watercolor</Nav.Link>
+                        <Nav.Link className="category-btn" onClick={() => handleCategoryClick("scifi")}>SciFi</Nav.Link> */}
                     </Nav>
                 </Col>
                 <Col>
