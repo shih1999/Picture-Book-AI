@@ -30,7 +30,7 @@ const EditStory = () => {
       console.log(res.data.postPages);
       // //alert(res.data.message);
       setPages(res.data.postPages);
-
+      setCurrentPage(res.data.postPages[0]["page_id"]);
     })
     .catch((err) => {
       console.log(err);
