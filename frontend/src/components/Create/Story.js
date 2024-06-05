@@ -179,6 +179,11 @@ const ChildBookEditor = () => {
       
     };
 
+    const handleCloseTooHomepage =  () => {
+      handleClose();
+      goBackToHomePage();
+    };
+  
   return (
     <Container fluid className="story-section">
       <Row>
@@ -201,8 +206,8 @@ const ChildBookEditor = () => {
           </Modal.Header>
           <Modal.Body>Publish your work to your friends</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
+            <Button variant="secondary" onClick={handleCloseTooHomepage}>
+              Jsut Save
             </Button>
             <Button variant="success" onClick={handlePublish}>
               Publish
