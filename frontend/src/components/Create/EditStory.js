@@ -45,7 +45,7 @@ const EditStory = () => {
 
 
   const goBackToHomePage = async () =>{
-    window.location.href = "/";
+    window.location.assign("/mystory");
   };
 
   const handleImageChange = (image) => {
