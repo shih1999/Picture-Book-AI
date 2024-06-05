@@ -207,7 +207,7 @@ const ChildBookEditor = () => {
           <Modal.Body>Publish your work to your friends</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseTooHomepage}>
-              Jsut Save
+              Just Save
             </Button>
             <Button variant="success" onClick={handlePublish}>
               Publish
