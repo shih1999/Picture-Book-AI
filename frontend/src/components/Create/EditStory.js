@@ -92,7 +92,7 @@ const EditStory = () => {
     // } catch (error) {
     //   console.error("Error:", error);
     // }
-    setGallery([...gallery, "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"]);
+    setGallery([...gallery, "https://i.ibb.co/vkCYtyr/18e029b7cc7eeea37c8e7aad3ada0f347b470be0cd0a479e9bd35c64ff33b5a4-2.png"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };

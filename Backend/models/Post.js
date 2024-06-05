@@ -72,24 +72,24 @@ class Post {
         return result.affectedRows; 
     }
     static async findAll() {
-        const sql = `SELECT * FROM posts ORDER BY created_at DESC`;
+        const sql = `SELECT * FROM posts WHERE published = 1 ORDER BY created_at DESC`;
         const [rows] = await db.execute(sql);
         return rows;
     }
     static async findAllSorted(sortway,descorasc) {
-        const sql = `SELECT * FROM posts ORDER BY ${sortway} ${descorasc}`;
+        const sql = `SELECT * FROM posts WHERE published = 1 ORDER BY ${sortway} ${descorasc}`;
         const [rows] = await db.execute(sql);
         return rows;
     }
     static async findcategory(sortedBy) {
         
-        let sql = `SELECT * FROM posts WHERE story_category = ?`;
+        let sql = `SELECT * FROM posts WHERE story_category = ? AND published = 1`;
         const [rows] = await db.execute(sql,[sortedBy]);
         return rows;
     }
     static async findcategoryandway(sortedBy,sortway,descorasc) {
         
-        let sql = `SELECT * FROM posts WHERE story_category = ? ORDER BY ${sortway} ${descorasc}`;
+        let sql = `SELECT * FROM posts WHERE story_category = ? AND published = 1 ORDER BY ${sortway} ${descorasc}`;
         const [rows] = await db.execute(sql,[sortedBy]);
         return rows;
     }

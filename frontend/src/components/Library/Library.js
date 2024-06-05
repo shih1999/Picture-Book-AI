@@ -32,7 +32,11 @@ function Library() {
         console.log(params);
 
         // fetching stories
+<<<<<<< Updated upstream
         axios.get('http://localhost:4000/posts/', {params})
+=======
+        axios.get('http://localhost:4000/posts/', payload)
+>>>>>>> Stashed changes
             .then(async response => {
                 setAllStories(response.data.posts);
                 const storyIDs = response.data.posts.map(story => story.post_id);
