@@ -1,6 +1,6 @@
 const OpenAI = require("openai");
 const openai = new OpenAI({
-    apiKey: "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",
+    apiKey: "",
     dangerouslyAllowBrowser: true
 });
 
