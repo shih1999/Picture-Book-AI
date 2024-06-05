@@ -32,21 +32,21 @@ var heroData = [
     id: 1,
     image: require('../../assets/images/choose_story.jpg'),
     title: 'Choose Your Own Story Type',
-    description: 'adadadadadasdasdadada',
+    description: 'Tailor your online presence with a platform that celebrates your uniqueness in every interaction.',
     link: 'https://www.google.com'
   },
   {
     id: 2,
     image: require('../../assets/images/making_book.jpg'),
     title: 'Make Your Own Story',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab suscipit dicta nulla. Consequuntur obcaecati officiis, labore doloribus non tempore impedit consequatur ab dolor. Explicabo quam repellendus vero omnis, nisi odio!',
+    description: 'Shape your digital image with a platform that merges personalized options and cutting-edge advancements.',
     link: 'https://www.facebook.com'
   },
   {
     id: 3,
     image: require('../../assets/images/sharing_book.jpg'),
     title: 'Share With Your Friends',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab suscipit dicta nulla. Consequuntur obcaecati officiis, labore doloribus non tempore impedit consequatur ab dolor. Explicabo quam repellendus vero omnis, nisi odio!',
+    description: 'Uncover your distinct style at our site – the ultimate hub for tailored web journeys.',
     link: 'https://www.twitter.com'
   }
 ]

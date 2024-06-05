@@ -17,7 +17,7 @@ function MyModal() {
 
     const [arthorInfo, setAuthor] = useState([]);
     const [storyInfo, setStory] = useState([]);
-    const [storyCover, setCover] = useState([]);
+    const [storyCover, setCover] = useState({});
     const [isAuthor, setAuthorTrue] = useState(false);
     
 
@@ -58,20 +58,21 @@ function MyModal() {
                         setAuthor(response.data.user);
                         handleAuthorTrue();
                     })
+                // get story cover
+                axios.get(`http://localhost:4000/contents/cover/${postId}`)
+                    .then(response => {
+                        console.log(response)
+                        console.log(response.data.postPage)
+                        setCover(response.data.postPage);
+                        console.log(storyCover)
+                    })
+                    .catch(error => {
+                        console.error('Error fetching cover:', error);
+                    });
             })
             .catch(error => {
                 console.error('Error fetching story:', error);
             });
-
-        // get story cover
-        axios.get(`http://localhost:4000/contents/cover/${postId}`)
-            .then(response => {
-                setCover(response.data.postPage);
-            })
-            .catch(error => {
-                console.error('Error fetching cover:', error);
-            });
-
         // for frontend testing
         // setStory([
         //     { "post_id": 3, "user_id": 1, "title": "Test Book", "created_at": "2024-06-04T00:45:23.000Z", "likes_count": 0, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] }}
