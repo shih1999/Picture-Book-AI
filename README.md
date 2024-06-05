@@ -36,8 +36,7 @@ npm install
 ```bash
 node server.js
 ```
-Runs the app in the development mode.
-Open http://localhost:4000
+Run the app in the development mode at http://localhost:4000
 
 ## Reference：
 1. [Storybird](https://storybird.com)
