@@ -28,7 +28,7 @@ const EditStory = () => {
     }).then((res) => {
 
       console.log(res.data.postPages);
-      // alert(res.data.message);
+      // //alert(res.data.message);
       setPages(res.data.postPages);
 
     })
@@ -73,20 +73,20 @@ const EditStory = () => {
 
   const handleSearchTermChange = async (e) => {
     e.preventDefault();
-    // try {
-    //   const data = await getImage(searchTerm);
-    //   if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
-    //     throw new Error("Error fetching data from chat-gpt API");
-    //   }
+    try {
+      const data = await getImage(searchTerm);
+      if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
+        throw new Error("Error fetching data from chat-gpt API");
+      }
       
-    //   // Handle the response data as needed
+      // Handle the response data as needed
       
-    //   console.log("ChatGPT Response:", data);
-    //   setGallery([...gallery, data]);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
-    setGallery([...gallery, "https://i.ibb.co/vkCYtyr/18e029b7cc7eeea37c8e7aad3ada0f347b470be0cd0a479e9bd35c64ff33b5a4-2.png"]);
+      console.log("ChatGPT Response:", data);
+      setGallery([...gallery, data]);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    // setGallery([...gallery, "https://i.ibb.co/vkCYtyr/18e029b7cc7eeea37c8e7aad3ada0f347b470be0cd0a479e9bd35c64ff33b5a4-2.png"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };
@@ -112,10 +112,10 @@ const EditStory = () => {
       // const data = response.data;
 
       // if (response.status === 200) {
-      //     alert(data.message);
+      //     //alert(data.message);
       // }
     } catch (error) {
-        alert('Error registering user');
+        //alert('Error registering user');
     };
   };
 
@@ -142,10 +142,10 @@ const EditStory = () => {
       const data = response.data;
 
       if (response.status === 200) {
-          alert(data.message);
+          //alert(data.message);
       }
     } catch (error) {
-        alert('Error registering user');
+        //alert('Error registering user');
     };
     handlePubClose()
     
@@ -166,10 +166,10 @@ const EditStory = () => {
       const data = response.data;
 
       if (response.status === 200) {
-          alert(data.message);
+          //alert(data.message);
       }
     } catch (error) {
-        alert('Error registering user');
+        //alert('Error registering user');
     };
     handleDelClose()
     

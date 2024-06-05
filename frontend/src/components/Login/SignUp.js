@@ -14,7 +14,7 @@ function SignUp() {
         event.preventDefault();
         
         if (password !== confirmPassword) {
-            alert("Passwords do not match");
+            //alert("Passwords do not match");
             return;
         }
 
@@ -35,11 +35,11 @@ function SignUp() {
             const data = response.data;
 
             if (response.status === 201) {
-                alert(data.message);
+                //alert(data.message);
                 window.location.href = "/login";
             }
         } catch (error) {
-            alert('Error registering user');
+            //alert('Error registering user');
         }
     };
 

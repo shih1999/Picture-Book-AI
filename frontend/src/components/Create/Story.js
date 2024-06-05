@@ -102,10 +102,10 @@ const ChildBookEditor = () => {
       const data = response.data;
 
       if (response.status === 201) {
-          alert(data.message);
+          //alert(data.message);
       }
     } catch (error) {
-        alert('Error registering user');
+        //alert('Error registering user');
     };
   };
 
@@ -127,7 +127,7 @@ const ChildBookEditor = () => {
         const data = response.data;
         console.log(data);
         // if (response.status === 200) {
-        //   // alert("Login successful");
+        //   // //alert("Login successful");
         //   console.log(data.post_id)
           
 
@@ -135,7 +135,7 @@ const ChildBookEditor = () => {
 
         if (response.status === 201) {
           
-            alert(data.message);
+            //alert(data.message);
             const newPostID = data.post_id;
             console.log(newPostID);
             // setPostID(data.post_id);
@@ -148,7 +148,7 @@ const ChildBookEditor = () => {
             goBackToHomePage();
           }
         } catch (error) {
-          alert('Error registering user');
+          //alert('Error registering user');
         }
       };
 

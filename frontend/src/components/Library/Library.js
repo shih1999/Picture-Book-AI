@@ -128,7 +128,7 @@ function Library() {
                         <Nav.Link href="#sketch" className="category-btn" onClick={() => handleCategoryClick("sketch")}>Sketch</Nav.Link>
                         <Nav.Link href="#cartoon" className="category-btn" onClick={() => handleCategoryClick("cartoon")}>Cartoon</Nav.Link>
                         <Nav.Link href="#anime" className="category-btn" onClick={() => handleCategoryClick("anime")}>Anime</Nav.Link>
-                        <Nav.Link href="#oil-painting" className="category-btn" onClick={() => handleCategoryClick("oilpainting")}>Oil Painting</Nav.Link>
+                        <Nav.Link href="#oil painting" className="category-btn" onClick={() => handleCategoryClick("oil painting")}>Oil Painting</Nav.Link>
                         <Nav.Link href="#watercolor" className="category-btn" onClick={() => handleCategoryClick("watercolor")}>Watercolor</Nav.Link>
                         <Nav.Link href="#scifi" className="category-btn" onClick={() => handleCategoryClick("scifi")}>SciFi</Nav.Link>
 
