@@ -59,20 +59,20 @@ const ChildBookEditor = () => {
 
   const handleSearchTermChange = async (e) => {
     e.preventDefault();
-    try {
-      const data = await getImage(searchTerm);
-      if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
-        throw new Error("Error fetching data from chat-gpt API");
-      }
+    // try {
+    //   const data = await getImage(searchTerm);
+    //   if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
+    //     throw new Error("Error fetching data from chat-gpt API");
+    //   }
       
-      // Handle the response data as needed
+    //   // Handle the response data as needed
       
-      console.log("ChatGPT Response:", data);
-      setGallery([...gallery, data]);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-    // setGallery([...gallery, "https://i.ibb.co/r5M9NB6/b48b8c8bfa6bac8453a03a0213d3a0ed2fd8d7b4ab05ab4880c442597c4faee8.png"]);
+    //   console.log("ChatGPT Response:", data);
+    //   setGallery([...gallery, data]);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
+    setGallery([...gallery, "https://i.ibb.co/6mkvx9C/a5521638d402715e3ab3530870d687bde4838affa87205701f659f8cdfebf15c.png"]);
     // setGallery(["https://via.placeholder.com/512","https://via.placeholder.com/512"])
     console.log(gallery)
   };
