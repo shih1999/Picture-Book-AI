@@ -31,12 +31,7 @@ function Library() {
         }
         console.log(params);
 
-        // fetching stories
-<<<<<<< Updated upstream
-        axios.get('http://localhost:4000/posts/', {params})
-=======
-        axios.get('http://localhost:4000/posts/', payload)
->>>>>>> Stashed changes
+        axios.get('http://localhost:4000/posts/', { params })
             .then(async response => {
                 setAllStories(response.data.posts);
                 const storyIDs = response.data.posts.map(story => story.post_id);
@@ -84,21 +79,6 @@ function Library() {
                 console.error('Error fetching stories:', error);
             });
 
-        // for frontend testing
-        // setAllStories([
-        //     { "post_id": 3, "user_id": 1, "title": "AQ", "created_at": "2024-06-04T00:45:23.000Z", "likes_count": 0, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] } },
-        //     { "post_id": 4, "user_id": 1, "title": "《露露的神奇探險》", "created_at": "2024-06-04T00:46:02.000Z", "likes_count": 1, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] } },
-        //     { "post_id": 1, "user_id": 2, "title": "《露露的神奇探險》", "created_at": "2024-06-04T00:46:02.000Z", "likes_count": 1, "comments_count": 0, "story_category": "anime", "published": { "type": "Buffer", "data": [ 0 ] } }
-        // ]);
-        // setAllAuthors({
-        //     1: "Author One",
-        //     2: "Author Two"
-        // });
-        // setAllCovers({
-        //     1: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg",
-        //     3: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg",
-        //     4: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Prick%C3%A4tarpucken.jpg"
-        // });
     }, [category, sortBy, order]);
 
     useEffect(() => {

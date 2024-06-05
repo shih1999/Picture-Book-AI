@@ -89,60 +89,23 @@ exports.getUserAllPost = async (req, res, next) => {
 
 exports.sorted = async (req, res, next) => {
     try {
-        const catgory = req.body.sortedBycatgory;
-        const sortway = req.body.sortedByway;
-        const descorasc = req.body.DESCorASC || "DESC";
-        if(catgory){
-            if(sortway){
-                const posts = await Post.findcategoryandway(catgory,sortway,descorasc);
-
-                if (posts.length > 0) {
-                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
-                } else {
-                    res.status(404).json({ message: 'No such posts Category' });
-                } 
-            }
-            else{
-                const posts = await Post.findcategory(catgory);
-
-                if (posts.length > 0) {
-                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
-                } else {
-                    res.status(404).json({ message: 'No such posts Category' });
-                } 
-            } 
+        const catgory = req.query.sortedBycatgory;
+        const sortway = req.query.sortedByway;
+        const descorasc = req.query.DESCorASC || "DESC";
+        
+        let posts;
+        if(catgory && sortway){
+            posts = await Post.findcategoryandway(catgory, sortway, descorasc);
+        } else if(catgory){
+            posts = await Post.findcategory(catgory);
+        } else if(sortway){
+            posts = await Post.findAllSorted(sortway, descorasc);
+        } else {
+            posts = await Post.findAll();
         }
-        else if(sortway){
-            if(catgory){
-                const posts = await Post.findcategoryandway(catgory,sortway,descorasc);
 
-                if (posts.length > 0) {
-                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
-                } else {
-                    res.status(404).json({ message: 'No such posts Category' });
-                } 
-            }
-            else{
-                const posts = await Post.findAllSorted(sortway,descorasc);
-
-                if (posts.length > 0) {
-                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
-                } else {
-                    res.status(404).json({ message: 'No such posts Category' });
-                }
-            } 
-        }
-        else{
-            const posts = await Post.findAll();
-
-                if (posts.length > 0) {
-                    res.status(200).json({ message: 'Posts sorted successfully。', posts });
-                } else {
-                    res.status(404).json({ message: 'No such posts Category' });
-                } 
-        }
         if (posts.length > 0) {
-            res.status(200).json({ message: 'Posts sorted successfully。', posts });
+            res.status(200).json({ message: 'Posts sorted successfully.', posts });
         } else {
             res.status(404).json({ message: 'No such posts Category' });
         }
