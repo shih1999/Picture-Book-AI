@@ -15,6 +15,7 @@ const ChildBookEditor = () => {
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
   const [show, setShow] = useState(false);
+  const [postID, setPostID] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -137,20 +138,46 @@ const ChildBookEditor = () => {
           
             //alert(data.message);
             const newPostID = data.post_id;
+            setPostID(data.post_id);
             console.log(newPostID);
             // setPostID(data.post_id);
             
             for (let i = 0; i < pages.length; i += 1) {
               await SaveEveryPages(pages[i], newPostID);
             }
-            handleClose();
+            handleShow();
+            // handleClose();
             
-            goBackToHomePage();
+            // goBackToHomePage();
           }
         } catch (error) {
           //alert('Error registering user');
         }
       };
+    const handlePublish = async () => {
+      try {
+        const response = await axios.put('http://localhost:4000/posts/publish/'+postID ,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const data = response.data;
+
+        if (response.status === 200) {
+            //alert(data.message);
+        }
+      } catch (error) {
+          //alert('Error registering user');
+      };
+      handleClose()
+      
+      await goBackToHomePage();
+
+
+      
+    };
 
   return (
     <Container fluid className="story-section">
@@ -164,21 +191,21 @@ const ChildBookEditor = () => {
           />
         </Col>
         <Col>
-          <Button variant="success" onClick={handleShow} >
+          <Button variant="success" onClick={handleSave} >
             Save Story
           </Button>
         </Col>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Do you want to save this story?</Modal.Title>
+            <Modal.Title>Do you want to publish?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Save your work and appreciate it!</Modal.Body>
+          <Modal.Body>Publish your work to your friends</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="success" onClick={handleSave}>
-              Save Changes
+            <Button variant="success" onClick={handlePublish}>
+              Publish
             </Button>
           </Modal.Footer>
         </Modal>
