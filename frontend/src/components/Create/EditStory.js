@@ -10,7 +10,9 @@ const EditStory = () => {
   // const postId = 1;
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [show, setShow] = useState(false);
+  const [pubshow, setPubShow] = useState(false);
+  const [delshow, setDelShow] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   // const [title, setTitle] = useState("");
@@ -24,8 +26,8 @@ const EditStory = () => {
             'Content-Type': 'application/json',
         },
     }).then((res) => {
-      console.log(res);
-      console.log(res.data);
+
+      console.log(res.data.postPages);
       // alert(res.data.message);
       setPages(res.data.postPages);
 
@@ -36,8 +38,10 @@ const EditStory = () => {
     
   }, []);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handlePubClose = () => setPubShow(false);
+  const handlePubShow = () => setPubShow(true);
+  const handleDelClose = () => setDelShow(false);
+  const handleDelShow = () => setDelShow(true);
 
 
   const goBackToHomePage = async () =>{
@@ -143,7 +147,7 @@ const EditStory = () => {
     } catch (error) {
         alert('Error registering user');
     };
-    handleClose()
+    handlePubClose()
     
     await goBackToHomePage();
 
@@ -167,7 +171,7 @@ const EditStory = () => {
     } catch (error) {
         alert('Error registering user');
     };
-    
+    handleDelClose()
     
     await goBackToHomePage();
 
@@ -175,7 +179,7 @@ const EditStory = () => {
     
   };
   const handleCloseTooHomepage =  () => {
-    handleClose();
+    handlePubClose();
     goBackToHomePage();
   };
 
@@ -197,12 +201,12 @@ const EditStory = () => {
           <Button type="button" className='button-edit mx-1' variant="success" onClick={handleEdit}>
             Edit Story
           </Button>
-          <Button className='button-delete mx-1' variant="danger" onClick={handleDelete} >
+          <Button className='button-delete mx-1' variant="danger" onClick={handleDelShow} >
             Delete Story
           </Button>
         </Col>
         <Col md = {{ span: 2 }}></Col>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={pubshow} onHide={handlePubShow}>
           <Modal.Header closeButton>
             <Modal.Title>Do you want to publish?</Modal.Title>
           </Modal.Header>
@@ -213,6 +217,20 @@ const EditStory = () => {
             </Button>
             <Button variant="success" onClick={handlePublish}>
               Publish
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={delshow} onHide={handleDelShow}>
+          <Modal.Header closeButton>
+            <Modal.Title>Do you want to delete this post?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Post will be deleted permanently!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleDelClose}>
+              Close
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              Delete
             </Button>
           </Modal.Footer>
         </Modal>
