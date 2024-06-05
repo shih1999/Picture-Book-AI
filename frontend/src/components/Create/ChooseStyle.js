@@ -1,11 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import Particle from "../Particle";
-// import StyleCard from "./StyleCards";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
-
 import anime from "../../assets/Styles/Anime.jpg"
 import oilpainting from "../../assets/Styles/OilPainting.jpg"
 import cartoon from "../../assets/Styles/cartoon.jpg"
@@ -16,7 +13,6 @@ import sketch from "../../assets/Styles/sketch.jpg"
 function ChooseStyle() {
   return (
     <Container fluid className="project-section">
-      {/* <Particle /> */}
       <Container>
         <h1 className="project-heading">
           Select a style you like <strong className="red"> </strong>

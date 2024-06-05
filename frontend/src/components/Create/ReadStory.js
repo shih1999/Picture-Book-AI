@@ -95,45 +95,10 @@ const ReadStory = () => {
           </div>
         </Col>
         <Col md={2} className='story-gallery'>
-          {/* <h4>Gallery</h4>
-          <Form>
-            <Form.Group controlId='prompt'>
-              <Form.Label>Search Images</Form.Label>
-              <Form.Control 
-                type = "text"
-                placeholder = "Search images..."
-                onChange = {(e) => setSearchTerm(e.target.value)}
-                value = {searchTerm}
-              />
-            </Form.Group>
-            <Form.Group controlId='submit'>
-              <Button className='m-2' onClick={handleSearchTermChange} variant="danger" type="submit">
-                Submit
-              </Button>
-            </Form.Group>
-            
-          </Form>
-          {gallery.map((image, index) => (
-            <div
-              key={index}
-              onClick={() => handleImageSelect(image)}
-              style={{ cursor: 'pointer' }}
-            >
-              <Image width={150} height={150} src={image} thumbnail />
-            </div>
-          ))} */}
+          
         </Col>
       </Row>
-      {/* <Row>
-        <Col>
-          <Button className='mt-2' variant="primary" onClick={handleAddPage}>
-            Add Page
-          </Button>
-          <Button className='mt-2' variant="danger" onClick={handleDeletePage}>
-            Delete Page
-          </Button>
-        </Col>
-      </Row> */}
+      
     </Container>
   );
 };

@@ -12,7 +12,6 @@ import {
 } from "react-icons/ai";
 
 import { GrGroup } from "react-icons/gr";
-import axios from "axios";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);

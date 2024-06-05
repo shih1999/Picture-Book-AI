@@ -4,13 +4,11 @@ import getImage from './api/get-image';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 
-// import { text } from 'body-parser';
 
 
 const ChildBookEditor = () => {
   const [pages, setPages] = useState([{ id: 1, image: null, text: '' , layout:"image-right"}]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
