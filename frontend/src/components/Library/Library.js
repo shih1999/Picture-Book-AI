@@ -77,6 +77,9 @@ function Library() {
             })
             .catch(error => {
                 console.error('Error fetching stories:', error);
+                setAllStories([]);
+                setAllCovers({});
+                setAllAuthors({});
             });
 
     }, [category, sortBy, order]);
