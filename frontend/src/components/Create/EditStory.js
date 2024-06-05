@@ -120,7 +120,7 @@ const EditStory = () => {
   };
 
   const handleEdit = async () => {
-    handleShow();
+    handlePubShow();
     for (let i = 0; i < pages.length; i += 1){
       // await console.log(pages[i])
       await EditEveryPages(pages[i]);
