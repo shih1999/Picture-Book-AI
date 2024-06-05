@@ -10,8 +10,8 @@ const ReadStory = () => {
   // const postId = 1;
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [gallery, setGallery] = useState([]);
+  // const [searchTerm, setSearchTerm] = useState('');
+  // const [gallery, setGallery] = useState([]);
 
 
 
@@ -26,7 +26,7 @@ const ReadStory = () => {
       console.log(res.data);
       // alert(res.data.message);
       setPages(res.data.postPages);
-
+      setCurrentPage(res.data.postPages[0]["page_id"])
     })
     .catch((err) => {
       console.log(err);
