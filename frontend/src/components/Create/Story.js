@@ -12,11 +12,10 @@ const ChildBookEditor = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   const [title, setTitle] = useState("");
-  // const [postID, setPostID] = useState(5);
+  const [show, setShow] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(postID) 
-  // },[postID])
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
@@ -142,6 +141,7 @@ const ChildBookEditor = () => {
             for (let i = 0; i < pages.length; i += 1) {
               await SaveEveryPages(pages[i], newPostID);
             }
+            handleClose();
             
             goBackToHomePage();
           }
@@ -162,10 +162,24 @@ const ChildBookEditor = () => {
           />
         </Col>
         <Col>
-          <Button variant="primary" onClick={handleSave} >
+          <Button variant="success" onClick={handleShow} >
             Save Story
           </Button>
         </Col>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Do you want to save this story?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Save your work and appreciate it!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="success" onClick={handleSave}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Row>
       <Row >
         <Col md={2} className='story-page'>
