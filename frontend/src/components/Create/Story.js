@@ -21,7 +21,7 @@ const ChildBookEditor = () => {
   const handleShow = () => setShow(true);
 
   const goBackToHomePage = async () =>{
-    window.location.href = "/mystory";
+    window.location.assign("/mystory");;
   };
 
   const handleAddPage = () => {
