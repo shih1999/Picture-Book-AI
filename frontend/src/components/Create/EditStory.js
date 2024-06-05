@@ -3,14 +3,14 @@ import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
 import getImage from './api/get-image';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-
+import Modal from 'react-bootstrap/Modal';
 
 const EditStory = () => {
   const {postId} = useParams();
   // const postId = 1;
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [layout, setLayout] = useState('image-right'); // image-top, image-bottom, image-left, image-right
+  const [show, setShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [gallery, setGallery] = useState([]);
   // const [title, setTitle] = useState("");
@@ -36,23 +36,13 @@ const EditStory = () => {
     
   }, []);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
   const goBackToHomePage = async () =>{
     window.location.href = "/";
   };
-
-  // const handleAddPage = () => {
-  //   const newPage = { page_id: pages.length + 1, post_id: postId, page_number: , "image_url": "dfsfa", "content": "big fdswolf", "layout": "up" };
-  //   setPages([...pages, newPage]);
-  //   setCurrentPage(newPage.id);
-  // };
-
-  // const handleDeletePage = () => {
-  //   const updatedPages = pages.filter((page) => page.id !== currentPage);
-  //   setPages(updatedPages);
-  //   setCurrentPage(updatedPages.length > 0 ? updatedPages[0].id : null);
-  // };
 
   const handleImageChange = (image) => {
     const updatedPages = pages.map((page) =>
@@ -126,28 +116,106 @@ const EditStory = () => {
   };
 
   const handleEdit = async () => {
-    
+    handleShow();
     for (let i = 0; i < pages.length; i += 1){
       // await console.log(pages[i])
       await EditEveryPages(pages[i]);
     };
+    // await goBackToHomePage();
+
+
+    
+  };
+  const handlePublish = async () => {
+    try {
+      const response = await axios.put('http://localhost:4000/posts/publish/'+postId ,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const data = response.data;
+
+      if (response.status === 200) {
+          alert(data.message);
+      }
+    } catch (error) {
+        alert('Error registering user');
+    };
+    handleClose()
     
     await goBackToHomePage();
 
 
     
   };
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete('http://localhost:4000/posts/delete/'+postId ,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const data = response.data;
+
+      if (response.status === 200) {
+          alert(data.message);
+      }
+    } catch (error) {
+        alert('Error registering user');
+    };
+    
+    
+    await goBackToHomePage();
+
+
+    
+  };
+  const handleCloseTooHomepage =  () => {
+    handleClose();
+    goBackToHomePage();
+  };
+
 
   return (
     <Container fluid className="story-section">
       <Row>
-        <Col md = {{ span: 4 , offset: 3 }}>
+        <Col md = {{ span: 4 }}>
         </Col>
         <Col>
-          <Button variant="primary" onClick={handleEdit} >
+          
+        </Col>
+        {/* <Col>
+          <Button variant="primary" onClick={handlePublish} >
+            Publish Story
+          </Button>
+        </Col> */}
+        <Col>
+          <Button type="button" className='button-edit mx-1' variant="success" onClick={handleEdit}>
             Edit Story
           </Button>
+          <Button className='button-delete mx-1' variant="danger" onClick={handleDelete} >
+            Delete Story
+          </Button>
         </Col>
+        <Col md = {{ span: 2 }}></Col>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Do you want to publish?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Publish your work to your friends</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseTooHomepage}>
+              Close
+            </Button>
+            <Button variant="success" onClick={handlePublish}>
+              Publish
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Row>
       <Row >
         <Col md={2} className='story-page'>

@@ -1401,3 +1401,10 @@ button:focus {
 .viewstory-modal .view-btn:hover {
   background-color: #ffa1a1 !important;
 }  
+
+/*  */
+/* button */
+/*  */
+.button-edit .button-delete{
+  width: 120px;
+}
