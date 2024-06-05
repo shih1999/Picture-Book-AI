@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, Image } from 'react-bootstrap';
-import getImage from './api/get-image';
+// import getImage from './api/get-image';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 

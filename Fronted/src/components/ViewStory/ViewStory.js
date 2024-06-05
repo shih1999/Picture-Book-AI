@@ -17,7 +17,7 @@ function MyModal() {
 
     const [arthorInfo, setAuthor] = useState([]);
     const [storyInfo, setStory] = useState([]);
-    const [storyCover, setCover] = useState({});
+    const [storyCover, setCover] = useState([]);
     const [isAuthor, setAuthorTrue] = useState(false);
     
 
@@ -61,10 +61,7 @@ function MyModal() {
                 // get story cover
                 axios.get(`http://localhost:4000/contents/cover/${postId}`)
                     .then(response => {
-                        console.log(response)
-                        console.log(response.data.postPage)
-                        setCover(response.data.postPage);
-                        console.log(storyCover)
+                        setCover([response.data.postPage]);
                     })
                     .catch(error => {
                         console.error('Error fetching cover:', error);
