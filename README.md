@@ -4,7 +4,7 @@
 This website is an interactive picture book creation platform that leverages Generative AI technology. <br>
 It allows users to become creators of picture books rather than just passive readers.
 
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/f3a9978c-2844-4ba2-88d4-33aa23de17ae" width=90% height=90%>
+![](https://github.com/shih1999/Picture-Book-AI/blob/main/DEMO.gif)
 
 ## Features
 - AI-Driven Illustrations: Users can input text, triggering AI to generate illustrations in various styles tailored to the content.
@@ -52,6 +52,8 @@ It allows users to become creators of picture books rather than just passive rea
     ```
 4. Open your web browser and go to ```http://localhost:3000``` to use the application. <br>
    http://localhost:3000
+
+   <img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/f3a9978c-2844-4ba2-88d4-33aa23de17ae" width=90% height=90%>
 
 ## Future Plans
 - [ ] **Implement 3rd Party Login and Password Recovery:**  Integrate convenient login options such as Google account login and enhance account security.
