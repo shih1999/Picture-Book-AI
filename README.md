@@ -53,20 +53,6 @@ It allows users to become creators of picture books rather than just passive rea
 4. Open your web browser and go to ```http://localhost:3000``` to use the application. <br>
    http://localhost:3000
 
-
-## Website Preview
-> Home (Pricing)
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/e47d5796-74cf-43fd-bee6-1d0707359976" width=70% height=70%>
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/461bf0e7-c65d-418d-825d-b62bc9a6aab6" width=70% height=70%>
-
-> Create
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/1f9f941f-1cf4-49b1-8fc5-619099f2b3d2" width=70% height=70%>
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/76e99123-30dc-4033-8080-8703f18fda2c" width=70% height=70%>
-
-> MyStory
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/f50c4123-632e-4c5b-801c-f4cbe11e76f5" width=70% height=70%>
-<img src="https://github.com/shih1999/Picture-Book-AI/assets/65940533/b28208c7-ec94-40d6-a44a-63e220ceb7ef" width=70% height=70%>
-
 ## Future Plans
 - [ ] **Implement 3rd Party Login and Password Recovery:**  Integrate convenient login options such as Google account login and enhance account security.
 - [ ] **AI improvment:** Continuously enhance AI models to produce more accurate and diverse illustrations.
